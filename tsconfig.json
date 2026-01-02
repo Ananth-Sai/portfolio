@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/components/Reveal.tsx", "src/components/TypewriterWrapper.jsx"  ],
   "exclude": ["node_modules"]
 }
