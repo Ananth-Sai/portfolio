@@ -1,65 +1,155 @@
-import Image from "next/image";
+import connectMongo from "../lib/mongodb";
+import ExperienceModel from "../models/Experience";
+import ProjectModel from "../models/Projects";
+import EducationModel from "../models/Education";
+import TypewriterWrapper from "@/components/TypewriterWrapper";
+import DecryptedText from "@/components/DecryptedText";
 
-export default function Home() {
+import Navbar from "../components/Navbar";
+import About from "../components/About";
+import Experience from "../components/Experience";
+import Projects from "../components/Projects";
+import Education from "../components/Education";
+import Contact from "../components/Contact"; 
+import DataStream from "@/components/DataStream"; 
+
+import { FileDown, Linkedin, Github } from 'lucide-react';
+
+export default async function Home() {
+  await connectMongo();
+
+  // 1. Fetch Experience
+  const expData = await ExperienceModel.find({}).sort({ order: 1 }).lean();
+  const experiences = expData.map((exp: any) => ({
+    _id: exp._id.toString(),
+    role: exp.role,
+    company: exp.company,
+    duration: exp.duration,
+    bullets: exp.bullets,
+    techStack: exp.techStack
+  }));
+
+  // 2. Fetch Projects
+  const projData = await ProjectModel.find({}).sort({ order: 1 }).lean();
+  const projects = projData.map((proj: any) => ({
+    _id: proj._id.toString(),
+    title: proj.title,
+    subtitle: proj.subtitle,
+    bullets: proj.bullets,
+    techStack: proj.techStack
+  }));
+
+  // 3. Fetch Education
+  const eduData = await EducationModel.find({}).sort({ order: 1 }).lean();
+  const educations = eduData.map((edu: any) => ({
+    _id: edu._id.toString(),
+    degree: edu.degree,
+    school: edu.school,
+    location: edu.location,
+    date: edu.date
+  }));
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="relative flex flex-col bg-[#0F1923] text-white selection:bg-[#FF4655] selection:text-white overflow-hidden">
+      
+      {/* LAYER 1: FIXED TACTICAL GRID */}
+      <div className="tactical-grid" />
+
+      {/* LAYER 2: DATA STREAM */}
+      <DataStream />
+      
+      {/* LAYER 3: THE MOVING SCANLINE */}
+      <div className="scanline" />
+
+      {/* LAYER 4: MAIN CONTENT */}
+      <div className="relative z-10">
+        <Navbar />
+        
+        {/* HERO SECTION */}
+        <section className="relative flex min-h-screen flex-col items-center justify-center text-center px-6 pt-20 border-b border-gray-800">
+          
+          {/* TACTICAL HUD OVERLAYS */}
+          <div className="absolute top-32 left-10 hidden md:block text-[#FF4655] font-mono text-xs tracking-widest opacity-50">
+            SYS_STATUS: ONLINE<br/>
+            UPLINK: SECURE
+          </div>
+          <div className="absolute bottom-32 right-10 hidden md:block text-gray-500 font-mono text-xs tracking-widest opacity-50 text-right">
+            USER_ID: DEKU_0382<br/>
+            LOC: UTICA_NY
+          </div>
+
+          {/* DECRYPTED IDENTITY */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase tracking-widest text-white leading-tight flex flex-wrap items-center justify-center gap-4 italic mb-2">
+            <span className="text-[#FF4655]">{'>'}</span> 
+            <DecryptedText text="ANANTHA SAI VALLURU" speed={30} maxIterations={3} />
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          
+          <div className="mt-4 text-xl md:text-2xl tracking-[0.2em] text-[#FF4655] font-mono uppercase">
+            <TypewriterWrapper />
+          </div>
+
+          {/* TACTICAL ACTION NODES */}
+          <div className="mt-14 flex flex-wrap justify-center gap-6 z-20">
+            {/* RESUME */}
+            <a 
+              href="/resume.pdf" 
+              download="Anantha_Sai_Resume.pdf" 
+              data-interactive="true"
+              className="group relative flex items-center gap-3 bg-[#15202B] text-gray-300 border border-gray-800 px-6 py-4 text-sm tracking-[0.2em] transition-all duration-300 overflow-hidden hover:border-[#FF4655] hover:text-white hover:shadow-[0_0_30px_rgba(255,70,85,0.2)]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300" />
+              
+              <FileDown size={18} className="text-[#FF4655] group-hover:animate-pulse relative z-10" />
+              <span className="font-mono relative z-10">[ EXTRACT_DOSSIER ]</span>
+            </a>
+
+            {/* LINKEDIN */}
+            <a 
+              href="https://linkedin.com/in/ananth-valluru" 
+              target="_blank" 
+              data-interactive="true"
+              className="group relative flex items-center gap-3 bg-[#15202B] text-gray-300 border border-gray-800 px-6 py-4 text-sm tracking-[0.2em] transition-all duration-300 overflow-hidden hover:border-[#FF4655] hover:text-white hover:shadow-[0_0_30px_rgba(255,70,85,0.2)]"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300" />
+              
+              <Linkedin size={18} className="text-[#FF4655] group-hover:animate-pulse relative z-10" />
+              <span className="font-mono relative z-10">[ INITIATE_NETWORK_LINK ]</span>
+            </a>
+
+            {/* GITHUB */}
+            <a 
+              href="https://github.com/Ananth-Sai" 
+              target="_blank" 
+              data-interactive="true"
+              className="group relative flex items-center gap-3 bg-[#15202B] text-gray-300 border border-gray-800 px-6 py-4 text-sm tracking-[0.2em] transition-all duration-300 overflow-hidden hover:border-[#FF4655] hover:text-white hover:shadow-[0_0_30px_rgba(255,70,85,0.2)]"
+            >
+              <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300" />
+              
+              <Github size={18} className="text-[#FF4655] group-hover:animate-pulse relative z-10" />
+              <span className="font-mono relative z-10">[ ACCESS_SOURCE_CODE ]</span>
+            </a>
+          </div>
+
+          {/* TACTICAL SCROLL INDICATOR */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+            <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-[#FF4655]">Initialize_Scroll</span>
+            <div className="w-[1px] h-10 bg-gradient-to-b from-[#FF4655] to-transparent"></div>
+          </div>
+        </section>
+
+        {/* Tactical Content Sections */}
+        <About />
+        <Experience experiences={experiences} />
+        <Projects projects={projects} />
+        <Education educations={educations} />
+        <Contact />
+      </div>
+    </main>
   );
 }
