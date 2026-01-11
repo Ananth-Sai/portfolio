@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anantha Sai Valluru | Interactive Developer Portfolio
 
-## Getting Started
+> **Full-Stack Web Developer**
+> Master of Computer Science | Illinois Institute of Technology
 
-First, run the development server:
+Welcome to the repository for my interactive developer portfolio. Built with a terminal-inspired aesthetic, this project goes beyond a standard static resume by serving as a live demonstration of full-stack development, database architecture, and modern UI/UX design.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ⚙️ TECH STACK
+
+The system is built on a modern, scalable web architecture:
+
+* **Frontend Engine:** Next.js (App Router), React, TypeScript
+* **Styling & UI:** Tailwind CSS, Custom CSS animations (Scanlines, Grid overlays)
+* **Database Integration:** MongoDB with Mongoose Schema validation
+* **Contact Integration:** EmailJS for direct client-to-server messaging
+* **Assets:** Lucide React icons, Custom interactive cursors
+
+## 🚀 KEY FEATURES
+
+* **Dynamic Boot Sequence:** Decrypting text headers and typewriter terminal arrays that render upon system initialization.
+* **Immersive Interface:** Visual layers including global moving scanlines, static background grids, and continuous data streams.
+* **Live Data Retrieval:** Experience, Projects, and Education modules are not hardcoded. They are fetched dynamically from a secure MongoDB backend cluster.
+* **Interactive Node Targets:** Custom global crosshair cursor that reacts and morphs when hovering over interactive elements and action nodes.
+* **Secure Messaging:** A fully functional contact form that bypasses traditional mail clients to send messages directly via EmailJS.
+
+## 📂 DIRECTORY STRUCTURE
+
+A high-level overview of the system files:
+
+```text
+portfolio-website/
+├── public/             # Static assets, SVG icons, and PDF resume
+├── src/
+│   ├── app/            # Next.js App Router, Global CSS, and API routes
+│   ├── components/     # Modular UI elements (Navbar, Hero, HUD overlays)
+│   ├── lib/            # MongoDB connection logic
+│   └── models/         # Mongoose database schemas
+├── .env.local          # Local vault for database and API keys (Git ignored)
+└── tailwind.config.ts  # UI styling configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻 LOCAL DEVELOPMENT SETUP
+To run this project on your local machine, execute the following commands in your terminal:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+```
+git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+cd portfolio-website
+```
 
-## Learn More
+2. Install dependencies
+```
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Configure Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a ```.env.local``` file in the root directory and securely add your database and API keys:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+MONGODB_URI="your_mongodb_connection_string"
+NEXT_PUBLIC_EMAILJS_SERVICE_ID="your_service_id"
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID="your_template_id"
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY="your_public_key"
+```
 
-## Deploy on Vercel
+4. Start the development server
+```
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Open http://localhost:3000 with your browser to view the application.
