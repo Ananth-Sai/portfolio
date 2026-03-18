@@ -15,6 +15,8 @@ import DataStream from "@/components/DataStream";
 
 import { FileDown, Linkedin, Github } from 'lucide-react';
 
+export const revalidate = 0;
+
 export default async function Home() {
   await connectMongo();
 
