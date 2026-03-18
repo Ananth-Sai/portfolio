@@ -12,31 +12,33 @@ const bebas = Bebas_Neue({
   subsets: ["latin"] 
 });
 
-// FIXED: Added metadataBase to resolve absolute URLs for social images
 export const metadata = {
-  metadataBase: new URL('https://your-portfolio-domain.com'), // Replace with your live URL
-  title: "Anantha Sai Valluru | Full-Stack Web Developer",
+  // UPDATED: Your new professional Vercel subdomain
+  metadataBase: new URL('https://asv-dev.vercel.app'), 
+  title: "Anantha Sai Valluru | Full-Stack Developer",
   description: "Anantha Sai Valluru | Master of Computer Science Graduate from Illinois Tech | Full-Stack Developer specializing in AI-integrated web architectures and interactive UI.",
   keywords: [
     "Anantha Sai Valluru", 
+    "Ananth Valluru",
     "Full-Stack Developer", 
     "Illinois Institute of Technology", 
     "Web Development", 
     "React Developer", 
     "Utica NY", 
-    "Master of Computer Science"
+    "Master of Computer Science",
+    "AI Integration"
   ],
   openGraph: {
     title: "Anantha Sai Valluru | Full-Stack Portfolio",
-    description: "Master of Computer Science graduate from Illinois Tech specializing in high-performance web applications.",
-    url: "https://your-portfolio-domain.com", //
+    description: "Master of Computer Science graduate from Illinois Tech specializing in high-performance web applications and tactical UI design.",
+    url: "https://asv-dev.vercel.app", 
     siteName: "Ananth Valluru Portfolio",
     images: [
       {
         url: "/og-image.png", 
         width: 1200,
         height: 630,
-        alt: "Anantha Sai Valluru Portfolio Preview",
+        alt: "Anantha Sai Valluru Portfolio Tactical HUD Preview",
       },
     ],
     locale: "en_US",

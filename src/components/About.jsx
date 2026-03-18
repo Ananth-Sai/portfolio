@@ -6,7 +6,8 @@ import { Reveal } from './Reveal';
 import DecryptedText from './DecryptedText';
 import SkillMatrix from './SkillMatrix';
 
-export default function About() {
+// --- UPDATED: Added skillSectors as a prop ---
+export default function About({ skillSectors }) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -39,7 +40,6 @@ export default function About() {
               data-interactive="true"
               className="group relative bg-[#15202B] p-10 md:p-14 border border-gray-800 shadow-2xl overflow-hidden transition-all duration-500 hover:border-[#FF4655]/40"
             >
-              {/* Tactical Brackets */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#FF4655] opacity-40 group-hover:opacity-100 transition-all duration-300 z-10"></div>
               <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#FF4655] opacity-40 group-hover:opacity-100 transition-all duration-300 z-10"></div>
               <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#FF4655] opacity-40 group-hover:opacity-100 transition-all duration-300 z-10"></div>
@@ -71,7 +71,7 @@ export default function About() {
         {/* SKILL MATRIX SECTION */}
         <Reveal width="100%" delay={0.2}>
           <div className="w-full">
-             <SkillMatrix />
+             <SkillMatrix skillData={skillSectors} />
           </div>
         </Reveal>
 

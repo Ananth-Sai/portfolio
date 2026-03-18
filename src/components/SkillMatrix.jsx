@@ -4,45 +4,14 @@ import React, { useState, useEffect } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { Reveal } from './Reveal';
 
-const SKILL_DATA = [
-  {
-    category: "FRONTEND_INTEL",
-    skills: [
-      { name: "React / Next.js", rating: 4 },
-      { name: "Tailwind CSS", rating: 3 },
-      { name: "TypeScript", rating: 3 },
-      { name: "Framer Motion", rating: 4 }
-    ]
-  },
-  {
-    category: "BACKEND_LOGIC",
-    skills: [
-      { name: "Node.js", rating: 3 },
-      { name: "Django / Python", rating: 4 },
-      { name: "SQL / PostgreSQL", rating: 3 },
-      { name: "RESTful APIs", rating: 4 }
-    ]
-  },
-  {
-    category: "OPERATIONS_GRID",
-    skills: [
-      { name: "Docker", rating: 3 },
-      { name: "Git / GitHub", rating: 5 },
-      { name: "Jira / Agile", rating: 4 },
-      { name: "AWS / Netlify", rating: 3 }
-    ]
-  }
-];
-
 const SkillCard = ({ sector }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Array of 4 distinct neon glow styles
   const neonTextColors = [
-    "text-[#00E5FF] drop-shadow-[0_0_8px_rgba(0,229,255,0.8)]", // Cyan
-    "text-[#B026FF] drop-shadow-[0_0_8px_rgba(176,38,255,0.8)]", // Neon Purple
-    "text-[#39FF14] drop-shadow-[0_0_8px_rgba(57,255,20,0.8)]", // Neon Green
-    "text-[#FFDF00] drop-shadow-[0_0_8px_rgba(255,223,0,0.8)]"  // Neon Yellow
+    "text-[#00E5FF] drop-shadow-[0_0_8px_rgba(0,229,255,0.8)]",
+    "text-[#B026FF] drop-shadow-[0_0_8px_rgba(176,38,255,0.8)]",
+    "text-[#39FF14] drop-shadow-[0_0_8px_rgba(57,255,20,0.8)]",
+    "text-[#FFDF00] drop-shadow-[0_0_8px_rgba(255,223,0,0.8)]"
   ];
 
   return (
@@ -65,13 +34,11 @@ const SkillCard = ({ sector }) => {
 
         <div className="space-y-10">
           {sector.skills.map((skill, kIdx) => {
-            // Pick a color based on the row index
             const hoverColorClass = neonTextColors[kIdx % 4];
 
             return (
               <div key={kIdx} className="w-full">
                 <div className="flex justify-between items-end mb-3">
-                  {/* CHANGED: Skill text maps to the 4 neon colors on hover */}
                   <span className={`font-mono text-3sm uppercase transition-all duration-300 ${isHovered ? `${hoverColorClass} font-bold tracking-[0.25em]` : 'text-gray-400 tracking-[0.2em]'}`}>
                     {skill.name}
                   </span>
@@ -105,7 +72,7 @@ const SkillCard = ({ sector }) => {
   );
 };
 
-export default function SkillMatrix() {
+export default function SkillMatrix({ skillData }) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -113,6 +80,15 @@ export default function SkillMatrix() {
   }, []);
 
   if (!isMounted) return null;
+
+  // If there is no data from MongoDB yet, we show nothing or a loading state
+  if (!skillData || skillData.length === 0) {
+    return (
+      <div className="text-center font-mono text-gray-500 animate-pulse">
+        [ SYSTEM_ERROR: SKILL_DATA_NOT_FOUND ]
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-7xl mx-auto py-4 px-4">
@@ -127,7 +103,7 @@ export default function SkillMatrix() {
       </Reveal>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {SKILL_DATA.map((sector, sIdx) => (
+        {skillData.map((sector, sIdx) => (
           <Reveal key={sIdx} delay={0.1 * sIdx} width="100%">
             <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} className="h-full">
               <SkillCard sector={sector} />
