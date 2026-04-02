@@ -1,0 +1,66 @@
+"use client";
+
+import { motion, Variants } from "framer-motion"; // Added Variants import
+import { ReactNode } from "react";
+
+interface Props {
+  children: string;
+  className?: string;
+  delay?: number;
+}
+
+export default function TextReveal({ children, className, delay = 0 }: Props) {
+  const words = children.split(" ");
+
+  // Explicitly type the variants to satisfy the compiler
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    visible: (i: number = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: delay * i },
+    }),
+  };
+
+  const child: Variants = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 20,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      style={{ overflow: "hidden", display: "flex", flexWrap: "wrap" }}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className={className}
+    >
+      {words.map((word, index) => (
+        <span key={index} style={{ overflow: "hidden", display: "inline-block", marginRight: "0.25em" }}>
+          <motion.span
+            variants={child}
+            style={{ display: "inline-block" }}
+          >
+            {word}
+          </motion.span>
+        </span>
+      ))}
+    </motion.div>
+  );
+}
