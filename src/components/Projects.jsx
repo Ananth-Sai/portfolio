@@ -36,9 +36,17 @@ export default function Projects({ projects }) {
       { name: 'optimized SEO', color: 'text-[#F59E0B] font-bold' },
       { name: 'Vercel edge deployment', color: 'text-white font-bold tracking-wide' },
       { name: 'live data streaming', color: 'text-[#00E5FF] font-bold' },
-      { name: 'MongoDB Atlas', color: 'text-[#13AA52] font-bold' }
-    ];
+      { name: 'MongoDB Atlas', color: 'text-[#13AA52] font-bold' },
 
+      // --- ATS EVALUATOR KEYWORDS ---
+      { name: 'Google Gemini API', color: 'text-[#00E5FF] font-bold' },
+      { name: 'real-time ATS scoring', color: 'text-[#10B981] font-bold' },
+      { name: 'recruiter feedback', color: 'text-[#FF4655] font-bold' },
+      { name: 'STAR-formatted statements', color: 'text-[#F59E0B] font-bold' },
+      { name: 'Supabase', color: 'text-[#3ECF8E] font-bold' },
+      { name: 'TypeScript', color: 'text-[#3178C6] font-bold' },
+      { name: 'Vercel', color: 'text-white font-bold' }
+    ];
     let parts = [text];
     keywords.forEach((keyword) => {
       let newParts = [];
