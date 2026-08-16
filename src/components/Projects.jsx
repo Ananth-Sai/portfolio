@@ -135,9 +135,19 @@ export default function Projects({ projects }) {
                         </div>
 
                         {/* Heading: Restored to Pure White/Leading-none */}
-                        <h3 className="text-3xl md:text-5xl font-bold tracking-[0.1em] text-white uppercase mb-2 leading-none transition-colors duration-500 group-hover/card:text-[#FF4655]">
-                          {project.title}
-                        </h3>
+                        <a
+                          href={project.link || "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block group/link"
+                        >
+                          <h3 className="text-3xl md:text-5xl font-bold tracking-[0.1em] text-white uppercase mb-2 leading-none transition-colors duration-500 group-hover/card:text-[#FF4655] flex items-center gap-3">
+                            {project.title}
+                            <span className="text-lg text-[#FF4655] opacity-0 group-hover/card:opacity-100 transition-all duration-300 transform -translate-x-1 group-hover/card:translate-x-0">
+                              ↗
+                            </span>
+                          </h3>
+                        </a>
 
                         {/* Subtitle */}
                         <div className="mb-10 opacity-70">
