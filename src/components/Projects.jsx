@@ -45,7 +45,17 @@ export default function Projects({ projects }) {
       { name: 'STAR-formatted statements', color: 'text-[#F59E0B] font-bold' },
       { name: 'Supabase', color: 'text-[#3ECF8E] font-bold' },
       { name: 'TypeScript', color: 'text-[#3178C6] font-bold' },
-      { name: 'Vercel', color: 'text-white font-bold' }
+      { name: 'Vercel', color: 'text-white font-bold' },
+
+      // --- AUTONOMOUS AI PR REVIEW AGENT KEYWORDS ---
+      { name: 'FastAPI', color: 'text-[#009688] font-bold' },
+      { name: 'code reviews', color: 'text-[#FF4655] font-bold' },
+      { name: 'ChatOps commands', color: 'text-[#00E5FF] font-bold' },
+      { name: 'regex secret scanning', color: 'text-[#F59E0B] font-bold' },
+      { name: 'remediation pull requests', color: 'text-[#10B981] font-bold' },
+      { name: 'Docker', color: 'text-[#38BDF8] font-bold' },
+      { name: 'Redis queue', color: 'text-[#FF4655] font-bold' },
+      { name: '100% test coverage', color: 'text-[#10B981] font-bold' }
     ];
     let parts = [text];
     keywords.forEach((keyword) => {
