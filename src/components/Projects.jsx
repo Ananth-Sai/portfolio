@@ -55,7 +55,21 @@ export default function Projects({ projects }) {
       { name: 'remediation pull requests', color: 'text-[#10B981] font-bold' },
       { name: 'Docker', color: 'text-[#38BDF8] font-bold' },
       { name: 'Redis queue', color: 'text-[#FF4655] font-bold' },
-      { name: '100% test coverage', color: 'text-[#10B981] font-bold' }
+      { name: '100% test coverage', color: 'text-[#10B981] font-bold' },
+
+      // --- INFRADOCS AI KEYWORDS ---
+      { name: 'Streamlit', color: 'text-[#FF4B4B] font-bold' },
+      { name: 'Gemini 2.5 Flash', color: 'text-[#00E5FF] font-bold' },
+      { name: 'temperature=0', color: 'text-[#F59E0B] font-bold' },
+      { name: 'hybrid search', color: 'text-[#38BDF8] font-bold' },
+      { name: 'BM25 + Dense RRF', color: 'text-[#10B981] font-bold' },
+      { name: 'cross-encoder re-ranking', color: 'text-[#C678DD] font-bold' },
+      { name: 'HyDE', color: 'text-[#F59E0B] font-bold' },
+      { name: 'ablation evaluation', color: 'text-[#00E5FF] font-bold' },
+      { name: '100% recall', color: 'text-[#10B981] font-bold' },
+      { name: '0% hallucination', color: 'text-[#10B981] font-bold' },
+      { name: 'ChromaDB', color: 'text-[#FF7043] font-bold' },
+      { name: 'sentence-transformers', color: 'text-[#FFD43B] font-bold' }
     ];
     let parts = [text];
     keywords.forEach((keyword) => {
