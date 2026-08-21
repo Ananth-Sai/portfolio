@@ -160,7 +160,7 @@ export default function Projects({ projects }) {
 
                         {/* Heading: Restored to Pure White/Leading-none */}
                         <a
-                          href={project.githubUrl || project.liveUrl || project.link || "https://github.com/Ananth-Sai/Infradocs-ai"}
+                          href={project.link || "https://ats-evaluator-ai.vercel.app/"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-block group/link"
