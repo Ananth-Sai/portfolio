@@ -160,8 +160,8 @@ export default function Projects({ projects }) {
 
                         {/* Heading: Restored to Pure White/Leading-none */}
                         <a
-                          href={project.link || "https://ats-evaluator-ai.vercel.app/"}
-                          target="_blank"
+                          href={project.link || "#"}
+                          target={project.link ? "_blank" : "_self"}
                           rel="noopener noreferrer"
                           className="inline-block group/link"
                         >

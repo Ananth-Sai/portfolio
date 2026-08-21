@@ -33,8 +33,13 @@ export default async function Home() {
     _id: proj._id ? String(proj._id) : Math.random().toString(),
     title: proj.title || "",
     subtitle: proj.subtitle || "",
-    bullets: Array.isArray(proj.bullets) ? proj.bullets : [],
-    techStack: Array.isArray(proj.techStack) ? proj.techStack : []
+    bullets: Array.isArray(proj.bullets) && proj.bullets.length > 0
+      ? proj.bullets
+      : (Array.isArray(proj.points) ? proj.points : []),
+    techStack: Array.isArray(proj.techStack) && proj.techStack.length > 0
+      ? proj.techStack
+      : (Array.isArray(proj.tags) ? proj.tags : []),
+    link: proj.link || proj.liveUrl || proj.githubUrl || ""
   }));
 
   const eduData = await EducationModel.find({}).sort({ order: 1 }).lean();
