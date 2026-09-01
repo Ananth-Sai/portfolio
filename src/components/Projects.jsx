@@ -69,7 +69,23 @@ export default function Projects({ projects }) {
       { name: '100% recall', color: 'text-[#10B981] font-bold' },
       { name: '0% hallucination', color: 'text-[#10B981] font-bold' },
       { name: 'ChromaDB', color: 'text-[#FF7043] font-bold' },
-      { name: 'sentence-transformers', color: 'text-[#FFD43B] font-bold' }
+      { name: 'sentence-transformers', color: 'text-[#FFD43B] font-bold' },
+
+      // --- GIT VISUALIZER KEYWORDS ---
+      { name: 'Next.js App Router', color: 'text-[#FFFFFF] font-bold' },
+      { name: 'TypeScript', color: 'text-[#3178C6] font-bold' },
+      { name: 'Zustand', color: 'text-[#8A63D2] font-bold' },
+      { name: '3-tree architecture', color: 'text-[#F59E0B] font-bold' },
+      { name: 'AST parser', color: 'text-[#00E5FF] font-bold' },
+      { name: 'Framer Motion', color: 'text-[#EA4C89] font-bold' },
+      { name: 'Bézier splines', color: 'text-[#38BDF8] font-bold' },
+      { name: 'lane allocation', color: 'text-[#C678DD] font-bold' },
+      { name: '12-level curriculum', color: 'text-[#10B981] font-bold' },
+      { name: 'merge conflict labs', color: 'text-[#EF4444] font-bold' },
+      { name: 'interactive rebase', color: 'text-[#F59E0B] font-bold' },
+      { name: 'Gemini 2.5 Flash', color: 'text-[#00E5FF] font-bold' },
+      { name: 'BYOK', color: 'text-[#10B981] font-bold' },
+      { name: 'serverless proxy', color: 'text-[#38BDF8] font-bold' }
     ];
     let parts = [text];
     keywords.forEach((keyword) => {
