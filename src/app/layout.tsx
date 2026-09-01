@@ -1,6 +1,6 @@
 "use client";
 
-import { Bebas_Neue } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ReactNode, useEffect } from "react";
 import Lenis from "lenis";
@@ -11,9 +11,10 @@ import GlobalEffects from "@/components/GlobalEffects";
 import KillFeed from "@/components/KillFeed";
 import GlobalBackground from "@/components/GlobalBackground"; // NEW COMPONENT
 
-const bebas = Bebas_Neue({ 
-  weight: '400', 
-  subsets: ["latin"] 
+const manrope = Manrope({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
 });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -45,8 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="en" className="scroll-smooth">
-      {/* FIXED: Added 'global-grain' to body for cinematic texture */}
-      <body className={`${bebas.className} bg-[#0F1923] text-white cursor-none selection:bg-[#FF4655] selection:text-white overflow-x-hidden w-full relative global-grain`}>
+      <body className={`${manrope.className} bg-[#0F1923] text-white cursor-none selection:bg-[#FF4655] selection:text-white overflow-x-hidden w-full relative`}>
         
         {/* NEW: Global Atmosphere Layer (Fixed Gradients) */}
         <GlobalBackground /> 

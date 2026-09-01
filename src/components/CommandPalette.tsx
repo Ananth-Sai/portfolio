@@ -66,7 +66,7 @@ export default function CommandPalette() {
         });
         const data = await res.json();
         setAiResponse(`> INQUIRY: "${question}"\n\n> RESPONSE: ${data.answer}`);
-      } catch (err) {
+      } catch {
         setAiResponse(`> ERROR: UPLINK FAILED. CHECK API STATUS.`);
       } finally {
         setIsThinking(false);
@@ -84,7 +84,7 @@ export default function CommandPalette() {
           <div className="mt-2 pt-2 border-t border-gray-900 flex flex-col gap-1">
             <p className="opacity-50 tracking-tighter">{'>'} COMMS_CHANNELS:</p>
             <p>EMAIL: ananthsai0382@gmail.com</p>
-            <p>PHONE: +1 (315)601-8632</p>
+            <p>PHONE: +91 9100-677-299</p>
           </div>
         </div>
       );
@@ -92,7 +92,6 @@ export default function CommandPalette() {
       return;
     }
 
-    // REMOVED: Hue-rotate and Glitch filter triggers
     if (cmdLower === '/resume') window.open('/resume.pdf', '_blank');
 
     if (cmdLower === '/reset') {

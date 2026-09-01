@@ -1,18 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useSyncExternalStore } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { Reveal } from './Reveal';
 import DecryptedText from './DecryptedText';
 import SkillMatrix from './SkillMatrix';
 
+const emptySubscribe = () => () => {};
+
 // --- UPDATED: Added skillSectors as a prop ---
 export default function About({ skillSectors }) {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   if (!isMounted) {
     return (
@@ -54,7 +52,7 @@ export default function About({ skillSectors }) {
 
               <div className="relative z-20">
                 <span className="text-[#FF4655] font-mono text-sm tracking-[0.4em] block mb-6 opacity-60 italic">
-                  // SUBJECT_BIO_DATA_EXTRACTED
+                  {"// SUBJECT_BIO_DATA_EXTRACTED"}
                 </span>
 
                 <p className="text-lg md:text-xl text-gray-400 leading-loose tracking-[0.1em] text-justify font-mono uppercase">

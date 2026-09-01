@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     const { question } = await req.json();
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
 
     const systemPrompt = `
       YOU ARE A TACTICAL, AUTOMATED TERMINAL ASSISTANT EMBEDDED IN THE PORTFOLIO WEBSITE OF ANANTHA SAI VALLURU. 
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
 
       PROJECT SPOTLIGHT: TACTICAL PORTFOLIO 
       - ARCHITECTURE: BUILT WITH NEXT.JS APP ROUTER AND FRAMER MOTION.
-      - INNOVATION: SECURE SERVER-SIDE AI OPERATOR UPLINK USING GEMINI 2.5 FLASH.
+      - INNOVATION: SECURE SERVER-SIDE AI OPERATOR UPLINK USING GEMINI 3.5 FLASH.
       - FEATURES: EVENT-DRIVEN "KILL-FEED" NOTIFICATION SYSTEM AND DYNAMIC THEME PROTOCOLS (VIPER, GLITCH, SAFE-MODE).
 
       LOGISTICS & AVAILABILITY:
@@ -84,14 +84,15 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ answer: text });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errMessage = error instanceof Error ? error.message : String(error);
     // 2. Log the EXACT error to the VS Code terminal
     console.error("===== GEMINI API ERROR =====");
-    console.error(error.message || error);
+    console.error(errMessage);
     console.error("============================");
     
     return NextResponse.json(
-      { answer: `UPLINK FAILED: ${error.message || "Unknown Error"}` }, 
+      { answer: `UPLINK FAILED: ${errMessage || "Unknown Error"}` }, 
       { status: 500 }
     );
   }

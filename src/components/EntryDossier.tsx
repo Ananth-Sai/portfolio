@@ -24,7 +24,7 @@ export default function EntryDossier() {
       <div className="absolute bottom-40 right-10 hidden xl:flex flex-col gap-2 text-gray-500 font-mono text-[10px] tracking-[0.3em] opacity-40 text-right">
         <TextReveal delay={0.8}>USER_ID: DEKU_0382</TextReveal>
         <div className="flex items-center justify-end gap-2 text-[#FF4655]">
-          <TextReveal delay={0.9}>LOC: 43.1009° N, 75.2327° W</TextReveal>
+          <TextReveal delay={0.9}>LOC: HYD, TELANGANA, INDIA</TextReveal>
           <Crosshair size={10} className="animate-spin-slow" />
         </div>
       </div>

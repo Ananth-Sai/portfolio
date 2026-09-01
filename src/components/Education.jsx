@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useSyncExternalStore } from 'react';
 import { Reveal } from './Reveal';
 import Tilt from 'react-parallax-tilt';
 import DecryptedText from './DecryptedText';
 
+const emptySubscribe = () => () => {};
+
 export default function Education({ educations }) {
   const safeEducations = educations || [];
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   if (!isMounted) {
     return (
@@ -61,7 +59,7 @@ export default function Education({ educations }) {
                   <div className="flex justify-between items-start mb-6">
                     <div>
                       <span className="text-[#FF4655] font-mono text-xs tracking-[0.4em] block mb-2 uppercase opacity-70 transition-all duration-300 group-hover:text-white group-hover:opacity-100 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
-                        // NODE_EDU_0{index + 1}
+                        {`// NODE_EDU_0${index + 1}`}
                       </span>
                       <h3 className="text-2xl md:text-3xl font-medium tracking-widest text-white uppercase italic leading-tight">
                         {edu.degree}

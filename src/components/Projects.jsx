@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useSyncExternalStore } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { Reveal } from './Reveal';
 import DecryptedText from './DecryptedText';
 import TextReveal from './TextReveal';
 import Magnetic from './Magnetic';
 
+const emptySubscribe = () => () => {};
+
 export default function Projects({ projects }) {
   const safeProjects = projects || [];
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   if (!isMounted) {
     return (
@@ -93,9 +91,9 @@ export default function Projects({ projects }) {
       parts.forEach((part) => {
         if (typeof part === 'string') {
           const splitParts = part.split(new RegExp(`(${keyword.name})`, 'gi'));
-          splitParts.forEach((sp) => {
+          splitParts.forEach((sp, spIdx) => {
             if (sp.toLowerCase() === keyword.name.toLowerCase()) {
-              newParts.push(<span key={Math.random()} className={`${keyword.color} font-bold`}>{sp}</span>);
+              newParts.push(<span key={`${keyword.name}-${spIdx}`} className={`${keyword.color} font-bold`}>{sp}</span>);
             } else {
               newParts.push(sp);
             }

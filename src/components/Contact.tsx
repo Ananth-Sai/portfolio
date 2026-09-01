@@ -1,20 +1,18 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 import emailjs from '@emailjs/browser';
 import { Reveal } from './Reveal';
 import DecryptedText from './DecryptedText';
+
+const emptySubscribe = () => () => {};
 
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
   const [buttonText, setButtonText] = useState("INITIATE_UPLINK");
 
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +26,7 @@ export default function Contact() {
       form.current,
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
     )
-      .then((result) => {
+      .then(() => {
         setButtonText("TRANSMISSION_SUCCESSFUL");
 
         window.dispatchEvent(new CustomEvent('kill-feed-notify', {
@@ -37,7 +35,7 @@ export default function Contact() {
 
         form.current?.reset();
         setTimeout(() => setButtonText("INITIATE_UPLINK"), 3000);
-      }, (error) => {
+      }, () => {
         setButtonText("ERROR_CONNECTION_FAILED");
 
         window.dispatchEvent(new CustomEvent('kill-feed-notify', {
@@ -72,24 +70,24 @@ export default function Contact() {
           <Reveal delay={0.2} width="100%">
             <div className="flex flex-col justify-center gap-10 h-full">
               <h3 className="text-3xl md:text-4xl font-medium uppercase tracking-widest text-white italic">
-                {'>'} LET'S CONNECT
+                {">"} LET&apos;S CONNECT
               </h3>
               <p className="text-lg text-gray-300 tracking-wide leading-relaxed" style={{ fontFamily: 'system-ui, sans-serif' }}>
-                Whether you're hiring for a <span className="text-white font-bold">Full-Stack Developer</span> role, scaling a production system that needs <span className="text-[#00E5FF] font-medium drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]">React, Next.js, or Node.js</span> expertise, I'm always open to connecting. Backed by a <span className="text-[#F59E0B] font-medium tracking-wide">Master of Computer Science</span> from <span className="text-[#F59E0B] font-bold drop-shadow-[0_0_5px_rgba(245,158,11,0.4)]">Illinois Tech</span>, I bring <span className="text-[#39FF14] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(57,255,20,0.4)]">production-grade engineering</span> to every conversation. Initiate contact through the channels below.
+                Whether you&apos;re hiring for a <span className="text-white font-bold">Full-Stack Developer</span> role, scaling a production system that needs <span className="text-[#00E5FF] font-medium drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]">React, Next.js, or Node.js</span> expertise, I&apos;m always open to connecting. Backed by a <span className="text-[#F59E0B] font-medium tracking-wide">Master of Computer Science</span> from <span className="text-[#F59E0B] font-bold drop-shadow-[0_0_5px_rgba(245,158,11,0.4)]">Illinois Tech</span>, I bring <span className="text-[#39FF14] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(57,255,20,0.4)]">production-grade engineering</span> to every conversation. Initiate contact through the channels below.
               </p>
 
               <div className="flex flex-col gap-8 mt-4">
                 <div data-interactive="true" className="group relative border border-gray-800 p-6 hover:border-[#FF4655]/50 transition-all duration-300 bg-[#15202B] overflow-hidden">
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300"></div>
-                  <p className="text-[#FF4655] font-mono text-sm tracking-[0.3em] uppercase mb-2 opacity-70 group-hover:text-white group-hover:opacity-100 transition-colors">// EMAIL_VECTOR</p>
+                  <p className="text-[#FF4655] font-mono text-sm tracking-[0.3em] uppercase mb-2 opacity-70 group-hover:text-white group-hover:opacity-100 transition-colors">{"// EMAIL_VECTOR"}</p>
                   <a href="mailto:ananthsai0382@gmail.com" className="text-xl text-gray-300 group-hover:text-white transition-colors duration-300 font-mono tracking-widest">
                     ananthsai0382@gmail.com
                   </a>
                 </div>
                 <div data-interactive="true" className="group relative border border-gray-800 p-6 hover:border-[#FF4655]/50 transition-all duration-300 bg-[#15202B] overflow-hidden">
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300"></div>
-                  <p className="text-[#FF4655] font-mono text-sm tracking-[0.3em] uppercase mb-2 opacity-70 group-hover:text-white group-hover:opacity-100 transition-colors">// VOICE_COMMS</p>
-                  <a href="tel:9100-677-299" className="text-xl text-gray-300 group-hover:text-white transition-colors duration-300 font-mono tracking-widest">
+                  <p className="text-[#FF4655] font-mono text-sm tracking-[0.3em] uppercase mb-2 opacity-70 group-hover:text-white group-hover:opacity-100 transition-colors">{"// VOICE_COMMS"}</p>
+                  <a href="tel:+919100677299" className="text-xl text-gray-300 group-hover:text-white transition-colors duration-300 font-mono tracking-widest">
                     +91 9100-677-299
                   </a>
                 </div>

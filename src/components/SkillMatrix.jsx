@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { Reveal } from './Reveal';
 
@@ -27,7 +27,7 @@ const SkillCard = ({ sector }) => {
       <div className="relative z-20 flex flex-col h-full">
         <div className="mb-10">
           <span className={`font-mono text-xs tracking-[0.4em] block mb-2 uppercase transition-all duration-300 ${isHovered ? 'text-white font-bold opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]' : 'text-[#FF4655] opacity-70'}`}>
-            // {sector.sector}
+            {`// ${sector.sector}`}
           </span>
           <h2 className="text-3xl font-medium text-white tracking-wide uppercase italic">{sector.sector}</h2>
         </div>
@@ -72,12 +72,10 @@ const SkillCard = ({ sector }) => {
   );
 };
 
-export default function SkillMatrix({ skillData }) {
-  const [isMounted, setIsMounted] = useState(false);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+export default function SkillMatrix({ skillData }) {
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   if (!isMounted) return null;
 

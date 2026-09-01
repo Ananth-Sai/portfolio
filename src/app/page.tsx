@@ -13,54 +13,54 @@ import Education from "../components/Education";
 import Contact from "../components/Contact";
 import DataStream from "@/components/DataStream";
 
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export default async function Home() {
   await connectMongo();
 
-  const expData = await ExperienceModel.find({}).sort({ order: 1 }).lean();
-  const experiences = expData.map((exp: any) => ({
-    _id: exp._id ? String(exp._id) : Math.random().toString(),
-    role: exp.role || "",
-    company: exp.company || "",
-    duration: exp.duration || "",
-    bullets: Array.isArray(exp.bullets) ? exp.bullets : [],
-    techStack: Array.isArray(exp.techStack) ? exp.techStack : []
+  const expData = (await ExperienceModel.find({}).sort({ order: 1 }).lean()) as Record<string, unknown>[];
+  const experiences = expData.map((exp, idx) => ({
+    _id: exp._id ? String(exp._id) : `exp-${idx}`,
+    role: (exp.role as string) || "",
+    company: (exp.company as string) || "",
+    duration: (exp.duration as string) || "",
+    bullets: Array.isArray(exp.bullets) ? (exp.bullets as string[]) : [],
+    techStack: Array.isArray(exp.techStack) ? (exp.techStack as string[]) : []
   }));
 
-  const projData = await ProjectModel.find({}).sort({ order: 1 }).lean();
-  const projects = projData.map((proj: any) => ({
-    _id: proj._id ? String(proj._id) : Math.random().toString(),
-    title: proj.title || "",
-    subtitle: proj.subtitle || "",
+  const projData = (await ProjectModel.find({}).sort({ order: 1 }).lean()) as Record<string, unknown>[];
+  const projects = projData.map((proj, idx) => ({
+    _id: proj._id ? String(proj._id) : `proj-${idx}`,
+    title: (proj.title as string) || "",
+    subtitle: (proj.subtitle as string) || "",
     bullets: Array.isArray(proj.bullets) && proj.bullets.length > 0
-      ? proj.bullets
-      : (Array.isArray(proj.points) ? proj.points : []),
+      ? (proj.bullets as string[])
+      : (Array.isArray(proj.points) ? (proj.points as string[]) : []),
     techStack: Array.isArray(proj.techStack) && proj.techStack.length > 0
-      ? proj.techStack
-      : (Array.isArray(proj.tags) ? proj.tags : []),
-    link: proj.link || proj.liveUrl || proj.githubUrl || ""
+      ? (proj.techStack as string[])
+      : (Array.isArray(proj.tags) ? (proj.tags as string[]) : []),
+    link: ((proj.link || proj.liveUrl || proj.githubUrl) as string) || ""
   }));
 
-  const eduData = await EducationModel.find({}).sort({ order: 1 }).lean();
-  const educations = eduData.map((edu: any) => ({
-    _id: edu._id ? String(edu._id) : Math.random().toString(),
-    degree: edu.degree || "",
-    school: edu.school || "",
-    location: edu.location || "",
-    date: edu.date || ""
+  const eduData = (await EducationModel.find({}).sort({ order: 1 }).lean()) as Record<string, unknown>[];
+  const educations = eduData.map((edu, idx) => ({
+    _id: edu._id ? String(edu._id) : `edu-${idx}`,
+    degree: (edu.degree as string) || "",
+    school: (edu.school as string) || "",
+    location: (edu.location as string) || "",
+    date: (edu.date as string) || ""
   }));
 
-  const skillData = await SkillSectorModel.find({}).sort({ order: 1 }).lean();
-  const skillSectors = skillData.map((sector: any) => ({
-    _id: sector._id ? String(sector._id) : Math.random().toString(),
-    sector: sector.sector || sector.category || "",
+  const skillData = (await SkillSectorModel.find({}).sort({ order: 1 }).lean()) as Record<string, unknown>[];
+  const skillSectors = skillData.map((sector, sIdx) => ({
+    _id: sector._id ? String(sector._id) : `sector-${sIdx}`,
+    sector: ((sector.sector || sector.category) as string) || "",
     // THE ULTIMATE FIX: Serialize the nested array objects to destroy hidden buffers
     skills: Array.isArray(sector.skills)
-      ? sector.skills.map((skill: any) => ({
-        name: skill.name || "",
-        rating: skill.rating || 0,
-        _id: skill._id ? String(skill._id) : Math.random().toString()
+      ? (sector.skills as Record<string, unknown>[]).map((skill, kIdx) => ({
+        name: (skill.name as string) || "",
+        rating: (skill.rating as number) || 0,
+        _id: skill._id ? String(skill._id) : `skill-${sIdx}-${kIdx}`
       }))
       : []
   }));

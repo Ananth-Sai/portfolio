@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 interface DecryptedTextProps {
   text: string;
@@ -9,6 +9,8 @@ interface DecryptedTextProps {
   className?: string;
 }
 
+const chars = '-/_X#%&*+=-<>[]{}';
+
 export default function DecryptedText({ 
   text, 
   speed = 50, 
@@ -16,11 +18,9 @@ export default function DecryptedText({
   className = "" 
 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState('');
-  const [isHovering, setIsHovering] = useState(false);
-  const chars = '-/_X#%&*+=-<>[]{}';
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const startScramble = () => {
+  const startScramble = useCallback(() => {
     let iteration = 0;
     
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -44,22 +44,20 @@ export default function DecryptedText({
 
       iteration += 1 / maxIterations;
     }, speed);
-  };
+  }, [text, speed, maxIterations]);
 
   useEffect(() => {
     // Initial scramble on mount
     startScramble();
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [text]);
+  }, [startScramble]);
 
   return (
     <span 
       className={className}
       onMouseEnter={() => {
-        setIsHovering(true);
         startScramble();
       }}
-      onMouseLeave={() => setIsHovering(false)}
     >
       {displayText || text}
     </span>

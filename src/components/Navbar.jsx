@@ -5,18 +5,18 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Magnetic from './Magnetic'; 
 
+// REORDERED: Matches the natural scroll flow of the dossier
+const navLinks = [
+  { name: 'ABOUT', id: 'about', prefix: '01' },
+  { name: 'EXPERIENCE', id: 'experience', prefix: '02' },
+  { name: 'PROJECTS', id: 'projects', prefix: '03' },
+  { name: 'EDUCATION', id: 'education', prefix: '04' },
+  { name: 'CONTACT', id: 'contact', prefix: '05' },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-
-  // REORDERED: Matches the natural scroll flow of the dossier
-  const navLinks = [
-    { name: 'ABOUT', id: 'about', prefix: '01' },
-    { name: 'EXPERIENCE', id: 'experience', prefix: '02' },
-    { name: 'PROJECTS', id: 'projects', prefix: '03' },
-    { name: 'EDUCATION', id: 'education', prefix: '04' },
-    { name: 'CONTACT', id: 'contact', prefix: '05' },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {

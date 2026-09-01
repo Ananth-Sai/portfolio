@@ -7,11 +7,12 @@ export default function KillFeed() {
   const [notifications, setNotifications] = useState<{id: number, text: string, type: string}[]>([]);
 
   useEffect(() => {
-    const handleNotify = (e: any) => {
-      const { message, type } = e.detail;
+    const handleNotify = (e: Event) => {
+      const customEvent = e as CustomEvent<{ message: string; type?: string }>;
+      const { message, type } = customEvent.detail || {};
       const newNotify = {
         id: Date.now(),
-        text: message,
+        text: message || '',
         type: type || 'system'
       };
 

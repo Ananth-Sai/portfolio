@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useSyncExternalStore } from 'react';
 import Tilt from 'react-parallax-tilt';
 import { Reveal } from './Reveal';
 import DecryptedText from './DecryptedText';
 import TextReveal from './TextReveal';
 import Magnetic from './Magnetic';
 
+const emptySubscribe = () => () => {};
+
 export default function Experience({ experiences }) {
   const safeExperiences = experiences || [];
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   const highlightSyntax = (text) => {
     const keywords = [
@@ -52,10 +50,10 @@ export default function Experience({ experiences }) {
       parts.forEach((part) => {
         if (typeof part === 'string') {
           const splitParts = part.split(new RegExp(`(${keyword.name})`, 'gi'));
-          splitParts.forEach((sp) => {
+          splitParts.forEach((sp, spIdx) => {
             if (sp.toLowerCase() === keyword.name.toLowerCase()) {
               newParts.push(
-                <span key={Math.random()} className={`${keyword.color} font-bold`}>
+                <span key={`${keyword.name}-${spIdx}`} className={`${keyword.color} font-bold`}>
                   {sp}
                 </span>
               );
