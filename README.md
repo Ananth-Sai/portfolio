@@ -1,73 +1,107 @@
-# Anantha Sai Valluru | Interactive Developer Portfolio
+<div align="center">
 
-> **Full-Stack Web Developer**
-> Master of Computer Science | Illinois Institute of Technology
+# ⌘ Anantha Sai Valluru
+### Tactical Terminal — Interactive Developer Portfolio
 
-Welcome to the repository for my interactive developer portfolio. Built with a terminal-inspired aesthetic, this project goes beyond a standard static resume by serving as a live demonstration of full-stack development, database architecture, and modern UI/UX design.
+[![Next.js](https://img.shields.io/badge/Next.js-App%20Router-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Gemini API](https://img.shields.io/badge/Google-Gemini%20API-4285F4?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-asv--dev.vercel.app-0070F3?style=for-the-badge&logo=vercel)](https://asv-dev.vercel.app)
 
-## ⚙️ TECH STACK
+<p align="center">
+  Not a static resume page — a live, terminal-themed application with a real AI assistant,<br/>
+  a database-backed content layer, and a command palette that actually does things.
+</p>
 
-The system is built on a modern, scalable web architecture:
+[🚀 Launch Live Site](https://asv-dev.vercel.app)
 
-* **Frontend Engine:** Next.js (App Router), React, TypeScript
-* **Styling & UI:** Tailwind CSS, Custom CSS animations (Scanlines, Grid overlays)
-* **Database Integration:** MongoDB with Mongoose Schema validation
-* **Contact Integration:** EmailJS for direct client-to-server messaging
-* **Assets:** Lucide React icons, Custom interactive cursors
+</div>
 
-## 🚀 KEY FEATURES
+---
 
-* **Dynamic Boot Sequence:** Decrypting text headers and typewriter terminal arrays that render upon system initialization.
-* **Immersive Interface:** Visual layers including global moving scanlines, static background grids, and continuous data streams.
-* **Live Data Retrieval:** Experience, Projects, and Education modules are not hardcoded. They are fetched dynamically from a secure MongoDB backend cluster.
-* **Interactive Node Targets:** Custom global crosshair cursor that reacts and morphs when hovering over interactive elements and action nodes.
-* **Secure Messaging:** A fully functional contact form that bypasses traditional mail clients to send messages directly via EmailJS.
+![Portfolio Preview](public/og-image.png)
 
-## 📂 DIRECTORY STRUCTURE
+## What makes this different
 
-A high-level overview of the system files:
+Most developer portfolios are static marketing pages. This one is a working full-stack application: an embedded AI assistant answers real questions about my background in-character as a tactical terminal, a `Cmd/Ctrl+K` command palette drives real actions (not just navigation), and the Experience/Projects/Education sections are pulled live from MongoDB — updating the content is a database write, not a redeploy.
 
-```text
-portfolio-website/
-├── public/             # Static assets, SVG icons, and PDF resume
+## Features
+
+| Feature | Description |
+|---|---|
+| 🤖 **AI Operator Uplink** | `/ask` queries a Gemini-powered assistant with full context on my background, projects, and skills — answers in-character as a tactical terminal readout |
+| ⌨️ **Command Palette** | `Cmd/Ctrl+K` opens a real command interface: `/ask`, `/socials`, `/resume`, `/reset` — not decorative, each one does something |
+| 🗄️ **Live Data Layer** | Experience, Projects, and Education are fetched from MongoDB via Mongoose, not hardcoded |
+| 🎬 **Dynamic Boot Sequence** | Decrypting text headers, typewriter terminal output, and staged reveal animations on load |
+| 📡 **Kill-Feed Notifications** | Event-driven, terminal-style toast system for in-app actions |
+| 🎯 **Custom Cursor & Magnetic UI** | A reactive crosshair cursor and magnetic hover effects on interactive elements |
+| 🥚 **Hidden Easter Egg** | Type a certain 5-letter word anywhere on the page. See what happens. |
+| ✉️ **Direct Contact** | Secure client-to-server messaging via EmailJS — no exposed mail credentials |
+
+## Tech Stack
+
+- **Frontend:** Next.js (App Router), React 19, TypeScript
+- **AI:** Google Gemini API (`@google/generative-ai`)
+- **Animation:** Framer Motion, Lenis smooth scroll
+- **Database:** MongoDB with Mongoose
+- **Styling:** Tailwind CSS, custom CSS (scanlines, grid overlays)
+- **Messaging:** EmailJS
+- **Icons:** Lucide React
+
+## Project Structure
+
+```
+portfolio-main/
+├── public/
+│   ├── og-image.png       # Open Graph preview image
+│   └── resume.pdf         # Served directly via the /resume command
 ├── src/
-│   ├── app/            # Next.js App Router, Global CSS, and API routes
-│   ├── components/     # Modular UI elements (Navbar, Hero, HUD overlays)
-│   ├── lib/            # MongoDB connection logic
-│   └── models/         # Mongoose database schemas
-├── .env.local          # Local vault for database and API keys (Git ignored)
-└── tailwind.config.ts  # UI styling configuration
+│   ├── app/
+│   │   ├── api/ask/       # Gemini-powered AI assistant endpoint
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── CommandPalette.tsx   # Cmd/Ctrl+K terminal command interface
+│   │   ├── EntryDossier.tsx     # Boot sequence / hero section
+│   │   ├── KillFeed.tsx         # Event-driven notification system
+│   │   ├── EasterEgg.tsx        # Hidden keyboard-triggered animation
+│   │   └── ...                  # Section components (About, Experience, Projects, etc.)
+│   ├── lib/mongodb.js      # Database connection
+│   └── models/             # Mongoose schemas (Experience, Education, Projects, SkillSector)
+└── .env.local              # API keys and DB connection string (git-ignored)
 ```
 
-## 💻 LOCAL DEVELOPMENT SETUP
-To run this project on your local machine, execute the following commands in your terminal:
+## Local Setup
 
-1. Clone the repository
-```
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-
-cd portfolio-website
-```
-
-2. Install dependencies
-```
+```bash
+git clone https://github.com/Ananth-Sai/portfolio.git
+cd portfolio
 npm install
 ```
 
-3. Configure Environment Variables
-
-Create a ```.env.local``` file in the root directory and securely add your database and API keys:
-
+Create `.env.local`:
 ```
-MONGODB_URI="your_mongodb_connection_string"
-NEXT_PUBLIC_EMAILJS_SERVICE_ID="your_service_id"
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID="your_template_id"
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY="your_public_key"
+MONGODB_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-4. Start the development server
-```
+```bash
 npm run dev
 ```
 
-5. Open http://localhost:3000 with your browser to view the application.
+Open `http://localhost:3000`.
+
+## Try it
+
+- Press `Cmd/Ctrl+K` to open the terminal command palette
+- Type `/ask` followed by a question about my background or projects
+- Type `/socials` for direct contact links
+- There's a hidden easter egg somewhere on the page — try typing while you scroll
+
+## License
+
+MIT
