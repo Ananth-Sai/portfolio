@@ -12,7 +12,6 @@ import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Education from "../components/Education";
 import Contact from "../components/Contact";
-import DataStream from "@/components/DataStream";
 
 export const revalidate = 60;
 
@@ -96,10 +95,6 @@ export default async function Home() {
 
   return (
     <main className="relative flex flex-col bg-[#0F1923] text-white">
-      <div className="tactical-grid fixed inset-0 pointer-events-none z-0" />
-      <DataStream />
-      <div className="scanline fixed inset-0 pointer-events-none z-50 opacity-[0.02]" />
-
       <div className="relative z-10 w-full">
         <Navbar />
         <EntryDossier />

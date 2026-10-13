@@ -13,14 +13,6 @@ export default function GlobalBackground() {
       
       {/* 3. Bottom Left Neutral Fill */}
       <div className="absolute bottom-[-10%] left-[10%] w-[40%] h-[50%] rounded-full bg-[#121c26]/30 blur-[120px]" />
-
-      {/* 4. The HUD Grid (Moved here to be global) */}
-      <div className="absolute inset-0 opacity-[0.03]" 
-           style={{ 
-             backgroundImage: 'linear-gradient(#4a5568 1px, transparent 1px), linear-gradient(90deg, #4a5568 1px, transparent 1px)', 
-             backgroundSize: '50px 50px' 
-           }} 
-      />
     </div>
   );
 }
