@@ -41,17 +41,18 @@ export default function Education({ educations }) {
             >
               <div 
                 data-interactive="true" 
-                className="group relative bg-[#15202B] p-8 md:p-10 border border-gray-800 transition-all duration-500 h-full flex flex-col shadow-xl cursor-none overflow-hidden hover:border-[#FF4655]"
+                className="group relative bg-[#0a1219]/90 backdrop-blur-2xl p-8 md:p-10 border border-[#FF4655]/20 transition-all duration-700 h-full flex flex-col shadow-[0_6px_22px_-4px_rgba(255,70,85,0.07)] cursor-none overflow-hidden hover:border-[#FF4655]/50 hover:shadow-[0_15px_35px_-5px_rgba(255,70,85,0.18)]"
               >
-                
-                <div className="absolute inset-0 border-2 border-dashed border-transparent group-hover:border-[#FF4655]/20 transition-all duration-500 pointer-events-none" />
+                {/* Tactical HUD Reticles */}
+                <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#FF4655]/70 pointer-events-none z-20" />
+                <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#FF4655]/30 pointer-events-none z-20" />
+                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#FF4655]/70 pointer-events-none z-20" />
 
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
-                
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300"></div>
+                {/* Ambient Radial Hover Glow */}
+                <div 
+                  className="absolute -top-20 -left-20 w-[350px] h-[350px] z-0 pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-100 blur-[120px]"
+                  style={{ background: 'radial-gradient(circle, rgba(255, 70, 85, 0.12) 0%, transparent 70%)' }}
+                />
 
                 <div className="relative z-20 flex flex-col h-full">
                   
@@ -67,7 +68,7 @@ export default function Education({ educations }) {
                     </div>
                     {/* VERIFIED BADGE */}
                     <div className="hidden sm:block">
-                      <span className="font-mono text-[10px] tracking-[0.2em] px-3 py-1 border border-[#B026FF] text-[#B026FF] shadow-[0_0_10px_rgba(176,38,255,0.1)] group-hover:shadow-[0_0_15px_rgba(176,38,255,0.3)] transition-shadow duration-500">
+                      <span className="font-mono text-[10px] tracking-[0.2em] px-3 py-1 border border-[#B026FF]/60 text-[#B026FF] bg-[#B026FF]/10 shadow-[0_0_10px_rgba(176,38,255,0.15)] group-hover:shadow-[0_0_15px_rgba(176,38,255,0.35)] transition-shadow duration-500">
                         [STATUS: VERIFIED]
                       </span>
                     </div>
@@ -82,8 +83,8 @@ export default function Education({ educations }) {
                     </p>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-gray-800 flex justify-between items-end">
-                    <div className="text-gray-400 font-mono text-base tracking-widest uppercase">
+                  <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-end">
+                    <div className="text-gray-400 font-mono text-sm tracking-widest uppercase">
                       {edu.date}
                     </div>
                   </div>

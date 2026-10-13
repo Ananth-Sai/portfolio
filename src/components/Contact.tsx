@@ -76,18 +76,20 @@ export default function Contact() {
                 Whether you&apos;re hiring for a <span className="text-white font-bold">Full-Stack Developer</span> or <span className="text-white font-bold">AI Engineer</span> role, scaling a production system that needs <span className="text-[#00E5FF] font-medium drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]">React, Next.js, Python, or Node.js</span> expertise, I&apos;m always open to connecting. Backed by a <span className="text-[#F59E0B] font-medium tracking-wide">Master of Computer Science</span> from <span className="text-[#F59E0B] font-bold drop-shadow-[0_0_5px_rgba(245,158,11,0.4)]">Illinois Tech</span>, I bring <span className="text-[#39FF14] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(57,255,20,0.4)]">production-grade engineering</span> to every conversation. Initiate contact through the channels below.
               </p>
 
-              <div className="flex flex-col gap-8 mt-4">
-                <div data-interactive="true" className="group relative border border-gray-800 p-6 hover:border-[#FF4655]/50 transition-all duration-300 bg-[#15202B] overflow-hidden">
-                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300"></div>
-                  <p className="text-[#FF4655] font-mono text-sm tracking-[0.3em] uppercase mb-2 opacity-70 group-hover:text-white group-hover:opacity-100 transition-colors">{"// EMAIL_VECTOR"}</p>
-                  <a href="mailto:ananthsai0382@gmail.com" className="text-xl text-gray-300 group-hover:text-white transition-colors duration-300 font-mono tracking-widest">
+              <div className="flex flex-col gap-6 mt-4">
+                <div data-interactive="true" className="group relative border border-[#FF4655]/20 p-6 hover:border-[#FF4655]/60 transition-all duration-500 bg-[#0a1219]/90 backdrop-blur-2xl overflow-hidden shadow-[0_4px_18px_-2px_rgba(255,70,85,0.06)]">
+                  <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-[#FF4655]/70 pointer-events-none" />
+                  <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-[#FF4655]/70 pointer-events-none" />
+                  <p className="text-[#FF4655] font-mono text-xs tracking-[0.3em] uppercase mb-2 opacity-80 group-hover:text-white group-hover:opacity-100 transition-colors">{"// EMAIL_VECTOR"}</p>
+                  <a href="mailto:ananthsai0382@gmail.com" className="text-xl text-gray-200 group-hover:text-white transition-colors duration-300 font-mono tracking-widest">
                     ananthsai0382@gmail.com
                   </a>
                 </div>
-                <div data-interactive="true" className="group relative border border-gray-800 p-6 hover:border-[#FF4655]/50 transition-all duration-300 bg-[#15202B] overflow-hidden">
-                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300"></div>
-                  <p className="text-[#FF4655] font-mono text-sm tracking-[0.3em] uppercase mb-2 opacity-70 group-hover:text-white group-hover:opacity-100 transition-colors">{"// VOICE_COMMS"}</p>
-                  <a href="tel:+919100677299" className="text-xl text-gray-300 group-hover:text-white transition-colors duration-300 font-mono tracking-widest">
+                <div data-interactive="true" className="group relative border border-[#FF4655]/20 p-6 hover:border-[#FF4655]/60 transition-all duration-500 bg-[#0a1219]/90 backdrop-blur-2xl overflow-hidden shadow-[0_4px_18px_-2px_rgba(255,70,85,0.06)]">
+                  <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-[#FF4655]/70 pointer-events-none" />
+                  <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-[#FF4655]/70 pointer-events-none" />
+                  <p className="text-[#FF4655] font-mono text-xs tracking-[0.3em] uppercase mb-2 opacity-80 group-hover:text-white group-hover:opacity-100 transition-colors">{"// VOICE_COMMS"}</p>
+                  <a href="tel:+919100677299" className="text-xl text-gray-200 group-hover:text-white transition-colors duration-300 font-mono tracking-widest">
                     +91 9100-677-299
                   </a>
                 </div>
@@ -101,18 +103,21 @@ export default function Contact() {
           <Reveal delay={0.4} width="100%">
             <div
               data-interactive="true"
-              className="group relative bg-[#15202B] p-8 md:p-10 border border-gray-800 transition-all duration-500 overflow-hidden hover:border-[#FF4655]"
+              className="group relative bg-[#0a1219]/90 backdrop-blur-2xl p-8 md:p-10 border border-[#FF4655]/20 transition-all duration-700 overflow-hidden hover:border-[#FF4655]/50 shadow-[0_6px_22px_-4px_rgba(255,70,85,0.07)] hover:shadow-[0_15px_35px_-5px_rgba(255,70,85,0.18)]"
             >
-              {/* Tactical Brackets */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#FF4655] z-10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#FF4655] z-10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#FF4655] z-10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#FF4655] z-10 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+              {/* Tactical HUD Reticles */}
+              <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#FF4655]/70 pointer-events-none z-20" />
+              <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#FF4655]/30 pointer-events-none z-20" />
+              <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#FF4655]/70 pointer-events-none z-20" />
 
-              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300"></div>
+              {/* Ambient Radial Hover Glow */}
+              <div 
+                className="absolute -top-20 -left-20 w-[350px] h-[350px] z-0 pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-100 blur-[120px]"
+                style={{ background: 'radial-gradient(circle, rgba(255, 70, 85, 0.12) 0%, transparent 70%)' }}
+              />
 
-              <div className="mb-8 border-b border-gray-800 pb-4 flex justify-between items-center">
-                <span className="text-[#FF4655] font-mono text-xs tracking-widest uppercase opacity-70">Secure_Uplink_v2.0</span>
+              <div className="mb-8 border-b border-white/10 pb-4 flex justify-between items-center relative z-10">
+                <span className="text-[#FF4655] font-mono text-xs tracking-widest uppercase opacity-80">Secure_Uplink_v2.0</span>
                 <div className="flex gap-1.5">
                   <div className="w-2 h-2 rounded-sm bg-gray-700"></div>
                   <div className="w-2 h-2 rounded-sm bg-gray-700"></div>
@@ -120,7 +125,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-8 relative z-10">
+              <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6 relative z-10">
                 <div className="flex flex-col gap-2 relative group/input">
                   <label htmlFor="user_name" className="text-[#FF4655] font-mono tracking-[0.2em] uppercase text-xs opacity-80 transition-opacity group-focus-within/input:text-white">
                     {'>'} IDENT_NAME
@@ -131,7 +136,7 @@ export default function Contact() {
                     id="user_name"
                     required
                     autoComplete="off"
-                    className="bg-[#0F1923] border border-gray-700 text-white px-4 py-4 focus:outline-none focus:border-[#FF4655] focus:shadow-[0_0_15px_rgba(255,70,85,0.2)] transition-all duration-300 text-base font-mono uppercase placeholder:opacity-30 tracking-widest"
+                    className="bg-[#060c12] border border-white/10 text-white px-4 py-3.5 focus:outline-none focus:border-[#FF4655] focus:shadow-[0_0_15px_rgba(255,70,85,0.2)] transition-all duration-300 text-sm font-mono uppercase placeholder:opacity-30 tracking-widest"
                     placeholder="ENTER_NAME..."
                   />
                 </div>
@@ -146,7 +151,7 @@ export default function Contact() {
                     id="user_email"
                     required
                     autoComplete="off"
-                    className="bg-[#0F1923] border border-gray-700 text-white px-4 py-4 focus:outline-none focus:border-[#FF4655] focus:shadow-[0_0_15px_rgba(255,70,85,0.2)] transition-all duration-300 text-base font-mono uppercase placeholder:opacity-30 tracking-widest"
+                    className="bg-[#060c12] border border-white/10 text-white px-4 py-3.5 focus:outline-none focus:border-[#FF4655] focus:shadow-[0_0_15px_rgba(255,70,85,0.2)] transition-all duration-300 text-sm font-mono uppercase placeholder:opacity-30 tracking-widest"
                     placeholder="EMAIL_ADDRESS..."
                   />
                 </div>
@@ -160,7 +165,7 @@ export default function Contact() {
                     id="message"
                     required
                     rows={4}
-                    className="bg-[#0F1923] border border-gray-700 text-white px-4 py-4 focus:outline-none focus:border-[#FF4655] focus:shadow-[0_0_15px_rgba(255,70,85,0.2)] transition-all duration-300 resize-none text-base font-mono uppercase placeholder:opacity-30 tracking-widest"
+                    className="bg-[#060c12] border border-white/10 text-white px-4 py-3.5 focus:outline-none focus:border-[#FF4655] focus:shadow-[0_0_15px_rgba(255,70,85,0.2)] transition-all duration-300 resize-none text-sm font-mono uppercase placeholder:opacity-30 tracking-widest"
                     placeholder="DESCRIBE_OBJECTIVE..."
                   ></textarea>
                 </div>
@@ -169,10 +174,10 @@ export default function Contact() {
                   type="submit"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
-                  className={`mt-4 w-full py-5 border text-sm tracking-[0.3em] font-bold uppercase transition-all duration-300 flex items-center justify-center gap-3
+                  className={`mt-2 w-full py-4 border text-xs tracking-[0.3em] font-bold uppercase transition-all duration-300 flex items-center justify-center gap-3
                     ${isHovered
                       ? 'bg-[#FF4655] border-[#FF4655] text-white shadow-[0_0_20px_rgba(255,70,85,0.5)]'
-                      : 'bg-transparent border-gray-600 text-gray-400'
+                      : 'bg-transparent border-[#FF4655]/40 text-gray-300 hover:border-[#FF4655]'
                     }`}
                 >
                   <span className={`${isHovered ? 'animate-pulse text-white' : 'text-[#FF4655]'}`}>{'>'}</span>

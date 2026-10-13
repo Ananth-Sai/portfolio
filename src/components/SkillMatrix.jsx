@@ -17,46 +17,54 @@ const SkillCard = ({ sector }) => {
   return (
     <div
       data-interactive="true"
-      className="group relative bg-[#15202B] p-10 border border-gray-800 transition-all duration-500 h-full flex flex-col overflow-hidden hover:border-[#FF4655]"
+      className="group relative bg-[#0a1219]/90 backdrop-blur-2xl p-8 md:p-10 border border-[#FF4655]/20 transition-all duration-700 h-full flex flex-col overflow-hidden hover:border-[#FF4655]/50 hover:shadow-[0_15px_35px_-5px_rgba(255,70,85,0.18)]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute inset-0 border-2 border-dashed border-transparent group-hover:border-[#FF4655]/10 transition-all duration-500 pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 tactical-noise transition-opacity duration-300" />
+      {/* Tactical HUD Reticles */}
+      <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#FF4655]/70 pointer-events-none z-20" />
+      <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#FF4655]/30 pointer-events-none z-20" />
+      <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#FF4655]/70 pointer-events-none z-20" />
+
+      {/* Ambient Radial Hover Glow */}
+      <div 
+        className="absolute -top-20 -left-20 w-[300px] h-[300px] z-0 pointer-events-none transition-opacity duration-1000 opacity-0 group-hover:opacity-100 blur-[100px]"
+        style={{ background: 'radial-gradient(circle, rgba(255, 70, 85, 0.12) 0%, transparent 70%)' }}
+      />
 
       <div className="relative z-20 flex flex-col h-full">
-        <div className="mb-10">
+        <div className="mb-8">
           <span className={`font-mono text-xs tracking-[0.4em] block mb-2 uppercase transition-all duration-300 ${isHovered ? 'text-white font-bold opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]' : 'text-[#FF4655] opacity-70'}`}>
             {`// ${sector.sector}`}
           </span>
-          <h2 className="text-3xl font-medium text-white tracking-wide uppercase italic">{sector.sector}</h2>
+          <h2 className="text-2xl md:text-3xl font-medium text-white tracking-wide uppercase italic">{sector.sector}</h2>
         </div>
 
-        <div className="space-y-10">
+        <div className="space-y-8">
           {sector.skills.map((skill, kIdx) => {
             const hoverColorClass = neonTextColors[kIdx % 4];
 
             return (
               <div key={kIdx} className="w-full">
-                <div className="flex justify-between items-end mb-3">
-                  <span className={`font-mono text-3sm uppercase transition-all duration-300 ${isHovered ? `${hoverColorClass} font-bold tracking-[0.25em]` : 'text-gray-400 tracking-[0.2em]'}`}>
+                <div className="flex justify-between items-end mb-2.5">
+                  <span className={`font-mono text-xs uppercase transition-all duration-300 ${isHovered ? `${hoverColorClass} font-bold tracking-[0.25em]` : 'text-gray-300 tracking-[0.2em]'}`}>
                     {skill.name}
                   </span>
-                  <span className={`text-[#FF4655] font-mono text-[15px] font-bold transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+                  <span className={`text-[#FF4655] font-mono text-xs font-bold transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
                     {skill.rating}/5
                   </span>
                 </div>
 
-                <div className="flex gap-2.5 w-full">
+                <div className="flex gap-2 w-full">
                   {[...Array(5)].map((_, i) => (
                     <div
                       key={i}
-                      className={`h-3 flex-grow rounded-sm transition-all duration-500 ease-out
+                      className={`h-2.5 flex-grow rounded-sm transition-all duration-500 ease-out
                         ${isHovered && i < skill.rating
-                          ? 'bg-[#FF4655] shadow-[0_0_15px_rgba(255,70,85,0.6)]'
-                          : 'bg-[#0F1923] border border-gray-800'
+                          ? 'bg-[#FF4655] shadow-[0_0_12px_rgba(255,70,85,0.7)]'
+                          : 'bg-white/5 border border-white/10'
                         }`}
-                      style={{ transitionDelay: isHovered ? `${i * 100}ms` : '0ms' }}
+                      style={{ transitionDelay: isHovered ? `${i * 80}ms` : '0ms' }}
                     />
                   ))}
                 </div>
@@ -65,9 +73,6 @@ const SkillCard = ({ sector }) => {
           })}
         </div>
       </div>
-
-      <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
-      <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-[#FF4655] opacity-0 group-hover:opacity-100 transition-all duration-300" />
     </div>
   );
 };

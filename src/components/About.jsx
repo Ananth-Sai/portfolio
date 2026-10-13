@@ -6,7 +6,7 @@ import { Reveal } from './Reveal';
 import DecryptedText from './DecryptedText';
 import SkillMatrix from './SkillMatrix';
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => { };
 
 // --- UPDATED: Added skillSectors as a prop ---
 export default function About({ skillSectors }) {
@@ -55,14 +55,14 @@ export default function About({ skillSectors }) {
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse shadow-[0_0_8px_#39FF14]" />
                   <span className="font-mono text-[10px] tracking-[0.25em] px-3 py-1 border border-[#00E5FF]/30 text-[#00E5FF] bg-[#00E5FF]/5 uppercase">
-                    STATUS: OPERATIONAL // DOSSIER_V2.0
+                    STATUS: OPERATIONAL
                   </span>
                 </div>
               </div>
 
               {/* Two-Column Split Dossier Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-20 items-stretch">
-                
+
                 {/* Left Column: Narrative Mission Statement (7 cols) */}
                 <div className="lg:col-span-7 flex flex-col justify-between border-l-2 border-[#FF4655]/80 pl-6 py-2 bg-gradient-to-r from-white/[0.02] to-transparent">
                   <div>
@@ -89,7 +89,7 @@ export default function About({ skillSectors }) {
 
                 {/* Right Column: 3 Precision HUD Intel Strips (5 cols) */}
                 <div className="lg:col-span-5 flex flex-col gap-3 justify-center">
-                  
+
                   {/* Intel Node 01 */}
                   <div className="p-4 border border-white/10 bg-white/[0.02] hover:border-[#00E5FF]/50 hover:bg-[#00E5FF]/5 transition-all duration-300 group/node">
                     <div className="flex justify-between items-center mb-1">
