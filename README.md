@@ -55,8 +55,7 @@ Most developer portfolios are static marketing pages. This one is a working full
 ```
 portfolio-main/
 ├── public/
-│   ├── og-image.png       # Open Graph preview image
-│   └── resume.pdf         # Served directly via the /resume command
+│   └── og-image.png       # Open Graph preview image (1200x630 tactical social card)
 ├── src/
 │   ├── app/
 │   │   ├── api/ask/       # Gemini-powered AI assistant endpoint
