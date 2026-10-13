@@ -158,9 +158,20 @@ export default function Projects({ projects }) {
                   >
                     <div
                       data-interactive="true"
-                      className="group/card relative bg-[#0a1219]/80 backdrop-blur-2xl p-8 md:p-12 border border-white/5 transition-all duration-700 h-full flex flex-col overflow-hidden cursor-none
-                                 hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]"
+                      className={`group/card relative bg-[#0a1219]/80 backdrop-blur-2xl p-8 md:p-12 border transition-all duration-700 h-full flex flex-col overflow-hidden cursor-none ${
+                        index === 0
+                          ? 'border-[#FF4655]/25 hover:border-[#FF4655]/50 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]'
+                          : 'border-white/5 hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]'
+                      }`}
                     >
+                      {/* TACTICAL HUD RETICLES (FOR #1 FLAGSHIP PROJECT) */}
+                      {index === 0 && (
+                        <>
+                          <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#FF4655]/70 pointer-events-none z-20" />
+                          <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#FF4655]/30 pointer-events-none z-20" />
+                          <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#FF4655]/70 pointer-events-none z-20" />
+                        </>
+                      )}
 
                       {/* LATEST PROJECT CORNER BADGE (WITH VISIBLE LASER SWEEP) */}
                       {index === 0 && (
