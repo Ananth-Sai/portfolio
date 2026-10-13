@@ -162,6 +162,17 @@ export default function Projects({ projects }) {
                                  hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]"
                     >
 
+                      {/* LATEST PROJECT CORNER BADGE (AUTOMATIC FOR #1 PROJECT) */}
+                      {index === 0 && (
+                        <div className="absolute top-0 right-0 z-30 flex items-center gap-2 px-3.5 py-1.5 bg-[#FF4655]/20 border-b border-l border-[#FF4655]/60 backdrop-blur-md font-mono text-[9px] tracking-[0.25em] text-[#FF4655] font-bold uppercase shadow-[0_0_25px_rgba(255,70,85,0.45)] rounded-bl-sm pointer-events-none">
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF4655] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FF4655]"></span>
+                          </span>
+                          <span>NEW_DEPLOYMENT</span>
+                        </div>
+                      )}
+
                       {/* ASYMMETRICAL INTERNAL GLOW (Tucked in corner to avoid washing out text) */}
                       <div className="absolute -top-20 -left-20 w-[400px] h-[400px] z-0 pointer-events-none transition-opacity duration-1000
                                       opacity-0 group-hover/card:opacity-100 blur-[120px]"
