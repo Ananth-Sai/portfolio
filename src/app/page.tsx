@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import connectMongo from "../lib/mongodb";
 import ExperienceModel from "../models/Experience";
 import ProjectModel from "../models/Projects";
@@ -14,6 +15,34 @@ import Contact from "../components/Contact";
 import DataStream from "@/components/DataStream";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://asv-dev.vercel.app"),
+  title: "Anantha Sai Valluru // Full-Stack & AI Engineer",
+  description: "Tactical portfolio of Anantha Sai Valluru. Full-Stack Developer and AI Engineer specializing in Next.js, React, Node.js, Python, and multi-agent AI systems. MS in Computer Science from Illinois Tech.",
+  openGraph: {
+    title: "Anantha Sai Valluru // Full-Stack & AI Engineer",
+    description: "Full-Stack Developer and AI Engineer building scalable web platforms and autonomous AI systems. MS in Computer Science from Illinois Tech.",
+    url: "https://asv-dev.vercel.app",
+    siteName: "Ananth Valluru Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Anantha Sai Valluru Tactical Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Anantha Sai Valluru // Full-Stack & AI Engineer",
+    description: "Full-Stack Developer & AI Engineer portfolio. Next.js, Node.js, Python, and Multi-Agent AI systems.",
+    images: ["/og-image.png"],
+  },
+};
 
 export default async function Home() {
   await connectMongo();
@@ -79,6 +108,28 @@ export default async function Home() {
         <Projects projects={projects} />
         <Education educations={educations} />
         <Contact />
+
+        {/* TACTICAL BASELINE FOOTER */}
+        <footer className="w-full border-t border-gray-800/80 bg-[#0A1017] py-10 px-6 relative z-20">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 bg-[#FF4655] animate-pulse" />
+              <span className="text-gray-400 tracking-[0.3em] uppercase">
+                SYSTEM_ID: ANANTHA_SAI_VALLURU // 2026
+              </span>
+            </div>
+
+            <div className="flex items-center gap-6 text-gray-500 tracking-[0.2em] uppercase text-[11px]">
+              <span>STATUS: [ ALL_SYSTEMS_OPERATIONAL ]</span>
+              <span className="hidden sm:inline text-gray-700">|</span>
+              <span className="hidden sm:inline">STACK: NEXT.JS &bull; GEMINI &bull; ATLAS</span>
+            </div>
+
+            <div className="text-gray-500 tracking-widest text-[11px]">
+              &copy; 2026 ASV. ALL RIGHTS RESERVED.
+            </div>
+          </div>
+        </footer>
       </div>
     </main>
   );

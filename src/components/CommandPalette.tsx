@@ -16,7 +16,6 @@ export default function CommandPalette() {
   const manualCommands = [
     { cmd: '/ASK', desc: 'AI_OPERATOR_QUERY', intel: 'Query my background, projects, or technical expertise via direct AI uplink.' },
     { cmd: '/SOCIALS', desc: 'NETWORK_UPLINKS', intel: 'Encrypted access to my GitHub, LinkedIn, and professional contact channels.' },
-    { cmd: '/RESUME', desc: 'PERSONNEL_DOSSIER', intel: 'Download the official Anantha Sai Valluru professional engineering dossier.' },
     { cmd: '/RESET', desc: 'SYSTEM_STABILIZE', intel: 'Purge temporary terminal logs and restore UI baseline.' },
   ];
 
@@ -42,7 +41,7 @@ export default function CommandPalette() {
   useEffect(() => {
     if (isOpen) {
       setAiResponse(
-        `STATUS: [UPLINK_ESTABLISHED]\nLOCATION: HYDERABAD,INDIA\nACADEMIC DATA: ILLINOIS INSTITUTE OF TECHNOLOGY\nSUBJECT: ANANTHA SAI VALLURU\nOBJECTIVE: FULL STACK ENGINEER`
+        `STATUS: [UPLINK_ESTABLISHED]\nLOCATION: HYDERABAD,INDIA\nACADEMIC DATA: ILLINOIS INSTITUTE OF TECHNOLOGY\nSUBJECT: ANANTHA SAI VALLURU\nOBJECTIVE: FULL STACK & AI ENGINEER`
       );
     }
   }, [isOpen]);
@@ -92,7 +91,13 @@ export default function CommandPalette() {
       return;
     }
 
-    if (cmdLower === '/resume') window.open('/resume.pdf', '_blank');
+    if (cmdLower === '/resume') {
+      setAiResponse(
+        `> PERSONNEL_DOSSIER NOTICE:\nResumes are customized per role. Request a tailored copy directly via email (ananthsai0382@gmail.com) or LinkedIn.`
+      );
+      setInput('');
+      return;
+    }
 
     if (cmdLower === '/reset') {
       // Force remove any lingering theme classes just in case

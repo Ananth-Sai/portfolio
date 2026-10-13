@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { FileDown, Linkedin, Github, Crosshair } from 'lucide-react';
+import { Linkedin, Github, Crosshair } from 'lucide-react';
 import Magnetic from "@/components/Magnetic";
 import DecryptedText from "@/components/DecryptedText";
 import TextReveal from "@/components/TextReveal";
@@ -40,14 +40,6 @@ export default function EntryDossier() {
         </div>
 
         <div className="mt-16 flex flex-wrap justify-center gap-6">
-          <Magnetic>
-            <a href="/resume.pdf" className="group relative flex items-center gap-4 bg-[#15202B]/40 backdrop-blur-md text-gray-300 border border-white/5 px-12 py-6 text-lg tracking-[0.3em] transition-all duration-500 hover:border-[#FF4655] hover:text-white">
-              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#FF4655] opacity-50 group-hover:opacity-100" />
-              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#FF4655] opacity-50 group-hover:opacity-100" />
-              <FileDown size={20} className="text-[#FF4655]" />
-              <span className="font-mono">[ DOWNLOAD RESUME ]</span>
-            </a>
-          </Magnetic>
 
           <Magnetic>
             <a href="https://linkedin.com/in/ananth-valluru" target="_blank" className="group relative flex items-center gap-4 bg-[#15202B]/40 backdrop-blur-md text-gray-300 border border-white/5 px-12 py-6 text-lg tracking-[0.3em] transition-all duration-500 hover:border-[#FF4655] hover:text-white">

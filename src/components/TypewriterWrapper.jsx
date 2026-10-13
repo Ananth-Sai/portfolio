@@ -7,7 +7,8 @@ export default function TypewriterWrapper() {
     <Typewriter
       options={{
         strings: [
-          'Full-Stack Web Developer',
+          'Full-Stack Developer',
+          'AI Engineer',
           'Master of Computer Science',
         ],
         autoStart: true,
