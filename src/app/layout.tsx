@@ -20,15 +20,15 @@ const manrope = Manrope({
 export default function RootLayout({ children }: { children: ReactNode }) {
   
   useEffect(() => {
-    // Initialize Lenis for smooth "liquid" scrolling
+    // Initialize Lenis for responsive, high-fps smooth scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.8,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.5,
       infinite: false,
     });
 
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body className={`${manrope.className} bg-[#0F1923] text-white cursor-none selection:bg-[#FF4655] selection:text-white overflow-x-hidden w-full relative`}>
         
         {/* NEW: Global Atmosphere Layer (Fixed Gradients) */}

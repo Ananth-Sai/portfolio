@@ -11,10 +11,6 @@ body {
   overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 /* --- GLOBAL ATMOSPHERE STYLES --- */
 
 .tactical-noise {
