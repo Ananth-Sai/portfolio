@@ -3,12 +3,12 @@
 # ⌘ Anantha Sai Valluru
 ### Tactical Terminal — Interactive Developer Portfolio
 
-[![Next.js](https://img.shields.io/badge/Next.js-App%20Router-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Gemini API](https://img.shields.io/badge/Google-Gemini%20API-4285F4?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-asv--dev.vercel.app-0070F3?style=for-the-badge&logo=vercel)](https://asv-dev.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-App%20Router-0070F3?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Gemini API](https://img.shields.io/badge/Google%20Gemini-API-4285F4?logo=googlegemini&logoColor=white)](https://ai.google.dev/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer%20Motion-Animations-EA4C89?logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-asv--dev.vercel.app-0070F3?logo=vercel&logoColor=white)](https://asv-dev.vercel.app)
 
 <p align="center">
   Not a static resume page — a live, terminal-themed application with a real AI assistant,<br/>
