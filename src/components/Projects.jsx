@@ -160,7 +160,7 @@ export default function Projects({ projects }) {
                       data-interactive="true"
                       className={`group/card relative bg-[#0a1219]/80 backdrop-blur-2xl p-8 md:p-12 border transition-all duration-700 h-full flex flex-col overflow-hidden cursor-none ${
                         index === 0
-                          ? 'border-[#FF4655]/25 hover:border-[#FF4655]/50 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]'
+                          ? 'border-[#FF4655]/30 shadow-[0_10px_35px_-5px_rgba(255,70,85,0.12)] hover:border-[#FF4655]/60 hover:shadow-[0_25px_50px_-5px_rgba(255,70,85,0.25)]'
                           : 'border-white/5 hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]'
                       }`}
                     >
