@@ -39,3 +39,12 @@ html {
 .group:hover .flicker-overlay {
   opacity: 0.1; 
 }
+/* Laser Sweep Animation for Tactical Tag */
+@keyframes laserSweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  35%, 100% { transform: translateX(250%) skewX(-20deg); }
+}
+
+.laser-sweep {
+  animation: laserSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}

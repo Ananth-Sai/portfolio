@@ -158,35 +158,24 @@ export default function Projects({ projects }) {
                   >
                     <div
                       data-interactive="true"
-                      className={`group/card relative bg-[#0a1219]/80 backdrop-blur-2xl p-8 md:p-12 border transition-all duration-700 h-full flex flex-col overflow-hidden cursor-none ${
-                        index === 0
-                          ? 'border-[#FF4655]/40 shadow-[0_20px_60px_-15px_rgba(255,70,85,0.22)] hover:border-[#FF4655] hover:shadow-[0_40px_90px_-10px_rgba(255,70,85,0.45)]'
-                          : 'border-white/5 hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]'
-                      }`}
+                      className="group/card relative bg-[#0a1219]/80 backdrop-blur-2xl p-8 md:p-12 border border-white/5 transition-all duration-700 h-full flex flex-col overflow-hidden cursor-none
+                                 hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]"
                     >
-                      {/* TACTICAL HUD RETICLES (FOR #1 FLAGSHIP PROJECT) */}
-                      {index === 0 && (
-                        <>
-                          <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#FF4655]/80 pointer-events-none z-20" />
-                          <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#FF4655]/40 pointer-events-none z-20" />
-                          <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#FF4655]/80 pointer-events-none z-20" />
-                        </>
-                      )}
 
-                      {/* LATEST PROJECT CORNER BADGE (AUTOMATIC FOR #1 PROJECT - SOLUTION 2 + LASER SHIMMER) */}
+                      {/* LATEST PROJECT CORNER BADGE (WITH VISIBLE LASER SWEEP) */}
                       {index === 0 && (
                         <div 
-                          className="absolute top-0 right-0 z-30 flex items-center gap-2.5 px-5 py-2 bg-gradient-to-l from-[#FF4655]/35 to-[#FF4655]/15 border-b border-l border-[#FF4655]/90 backdrop-blur-md font-mono text-[11px] tracking-[0.25em] text-[#FF4655] font-black uppercase shadow-[0_0_40px_rgba(255,70,85,0.6)] pointer-events-none overflow-hidden"
+                          className="absolute top-0 right-0 z-30 flex items-center gap-2 px-4 py-2 bg-[#FF4655]/15 border-b border-l border-[#FF4655]/60 backdrop-blur-md font-mono text-[10px] tracking-[0.25em] text-[#FF4655] font-black uppercase shadow-[0_0_20px_rgba(255,70,85,0.25)] pointer-events-none overflow-hidden"
                           style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px))' }}
                         >
-                          {/* Laser Sweep Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-pulse pointer-events-none" />
+                          {/* Visible Animated Laser Sweep */}
+                          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent laser-sweep pointer-events-none" />
 
-                          <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF4655] opacity-90"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF4655]"></span>
+                          <span className="relative flex h-2 w-2 z-10">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF4655] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF4655] shadow-[0_0_8px_#FF4655]"></span>
                           </span>
-                          <span className="drop-shadow-[0_0_10px_rgba(255,70,85,0.9)]">✦ NEW_DEPLOYMENT</span>
+                          <span className="z-10 drop-shadow-[0_0_8px_rgba(255,70,85,0.7)]">✦ NEW_DEPLOYMENT</span>
                         </div>
                       )}
 
@@ -244,31 +233,13 @@ export default function Projects({ projects }) {
                           ))}
                         </ul>
 
-                        {/* Tech Tags & Launch Trigger */}
-                        <div className="flex flex-wrap items-center justify-between gap-4 mt-auto">
-                          <div className="flex flex-wrap gap-3">
-                            {project.techStack.map((tech, i) => (
-                              <span key={i} className="px-3 py-1.5 bg-white/5 backdrop-blur-md text-[10px] text-gray-300 border border-white/10 tracking-[0.2em] uppercase font-mono group-hover/card:border-[#FF4655]/50 group-hover/card:text-white group-hover/card:bg-[#FF4655]/10 transition-all duration-500">
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-
-                          {project.link && (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`flex items-center gap-2 px-4 py-1.5 font-mono text-[10px] tracking-[0.2em] uppercase font-bold transition-all duration-300 ${
-                                index === 0
-                                  ? 'bg-[#FF4655]/20 text-[#FF4655] border border-[#FF4655]/70 hover:bg-[#FF4655] hover:text-white shadow-[0_0_20px_rgba(255,70,85,0.35)]'
-                                  : 'bg-white/5 text-gray-400 border border-white/10 hover:border-[#00E5FF]/60 hover:text-[#00E5FF] hover:bg-[#00E5FF]/10'
-                              }`}
-                            >
-                              <span>LAUNCH</span>
-                              <span>↗</span>
-                            </a>
-                          )}
+                        {/* Tech Tags */}
+                        <div className="flex flex-wrap gap-3">
+                          {project.techStack.map((tech, i) => (
+                            <span key={i} className="px-3 py-1.5 bg-white/5 backdrop-blur-md text-[10px] text-gray-300 border border-white/10 tracking-[0.2em] uppercase font-mono group-hover/card:border-[#FF4655]/50 group-hover/card:text-white group-hover/card:bg-[#FF4655]/10 transition-all duration-500">
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
 
