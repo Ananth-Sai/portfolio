@@ -213,7 +213,7 @@ export default function Projects({ projects }) {
                           rel="noopener noreferrer"
                           className="inline-block group/link"
                         >
-                          <h3 className="text-3xl md:text-5xl font-bold tracking-[0.1em] text-white uppercase mb-2 leading-none transition-colors duration-500 group-hover/card:text-[#FF4655] flex items-center gap-3">
+                          <h3 className="text-2xl md:text-4xl font-bold tracking-[0.08em] text-white uppercase mb-3 leading-[1.15] transition-colors duration-500 group-hover/card:text-[#FF4655] flex items-center gap-3">
                             {project.title}
                             <span className="text-lg text-[#FF4655] opacity-0 group-hover/card:opacity-100 transition-all duration-300 transform -translate-x-1 group-hover/card:translate-x-0">
                               ↗
