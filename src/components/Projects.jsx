@@ -83,7 +83,17 @@ export default function Projects({ projects }) {
       { name: 'interactive rebase', color: 'text-[#F59E0B] font-bold' },
       { name: 'Gemini 2.5 Flash', color: 'text-[#00E5FF] font-bold' },
       { name: 'BYOK', color: 'text-[#10B981] font-bold' },
-      { name: 'serverless proxy', color: 'text-[#38BDF8] font-bold' }
+      { name: 'serverless proxy', color: 'text-[#38BDF8] font-bold' },
+
+      // --- DUALCODE KEYWORDS ---
+      { name: 'closed-loop cybernetic', color: 'text-[#00E5FF] font-bold' },
+      { name: 'zero-LLM Orchestrator', color: 'text-[#FF4655] font-bold' },
+      { name: 'asymmetric cross-model', color: 'text-[#C678DD] font-bold' },
+      { name: '5 engineering dimensions', color: 'text-[#F59E0B] font-bold' },
+      { name: 'difflib similarity', color: 'text-[#38BDF8] font-bold' },
+      { name: 'AST syntactic validation', color: 'text-[#F59E0B] font-bold' },
+      { name: 'sandboxed Pytest', color: 'text-[#10B981] font-bold' },
+      { name: 'stopping conditions', color: 'text-[#FF4655] font-bold' }
     ];
     let parts = [text];
     keywords.forEach((keyword) => {

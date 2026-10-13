@@ -13,7 +13,7 @@ import Education from "../components/Education";
 import Contact from "../components/Contact";
 import DataStream from "@/components/DataStream";
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export default async function Home() {
   await connectMongo();
