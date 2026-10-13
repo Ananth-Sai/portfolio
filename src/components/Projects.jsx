@@ -162,14 +162,17 @@ export default function Projects({ projects }) {
                                  hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]"
                     >
 
-                      {/* LATEST PROJECT CORNER BADGE (AUTOMATIC FOR #1 PROJECT) */}
+                      {/* LATEST PROJECT CORNER BADGE (AUTOMATIC FOR #1 PROJECT - SOLUTION 2) */}
                       {index === 0 && (
-                        <div className="absolute top-0 right-0 z-30 flex items-center gap-2 px-3.5 py-1.5 bg-[#FF4655]/20 border-b border-l border-[#FF4655]/60 backdrop-blur-md font-mono text-[9px] tracking-[0.25em] text-[#FF4655] font-bold uppercase shadow-[0_0_25px_rgba(255,70,85,0.45)] rounded-bl-sm pointer-events-none">
-                          <span className="relative flex h-1.5 w-1.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF4655] opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#FF4655]"></span>
+                        <div 
+                          className="absolute top-0 right-0 z-30 flex items-center gap-2.5 px-5 py-2 bg-gradient-to-l from-[#FF4655]/30 to-[#FF4655]/15 border-b border-l border-[#FF4655]/80 backdrop-blur-md font-mono text-[11px] tracking-[0.25em] text-[#FF4655] font-black uppercase shadow-[0_0_35px_rgba(255,70,85,0.5)] pointer-events-none"
+                          style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px))' }}
+                        >
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF4655] opacity-90"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FF4655]"></span>
                           </span>
-                          <span>NEW_DEPLOYMENT</span>
+                          <span className="drop-shadow-[0_0_10px_rgba(255,70,85,0.9)]">✦ NEW_DEPLOYMENT</span>
                         </div>
                       )}
 
@@ -190,7 +193,9 @@ export default function Projects({ projects }) {
                         {/* Meta Info */}
                         <div className="flex justify-between items-start mb-8 font-mono text-[10px] tracking-[0.4em] uppercase text-[#FF4655]">
                           <span>DATA_ID // 00{index + 1}</span>
-                          <span className="text-[#00E5FF] group-hover/card:shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">[ ACTIVE_BUILD ]</span>
+                          <span className="text-[#00E5FF] group-hover/card:shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                            {index === 0 ? '[ V1.0 // STABLE ]' : '[ ACTIVE_BUILD ]'}
+                          </span>
                         </div>
 
                         {/* Heading: Restored to Pure White/Leading-none */}
