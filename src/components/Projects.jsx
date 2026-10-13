@@ -134,7 +134,9 @@ export default function Projects({ projects }) {
         </Reveal>
 
         <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-32">
-          {safeProjects.map((project, index) => (
+          {safeProjects.map((project, index) => {
+            const isLatest = index === 0 || Boolean(project.isNew);
+            return (
             <div key={project._id || index} className="group md:even:translate-y-24 transition-transform duration-1000 ease-out relative">
 
               {/* EXTERNAL AMBIENT GLOW */}
@@ -158,23 +160,15 @@ export default function Projects({ projects }) {
                   >
                     <div
                       data-interactive="true"
-                      className={`group/card relative bg-[#0a1219]/80 backdrop-blur-2xl p-8 md:p-12 border transition-all duration-700 h-full flex flex-col overflow-hidden cursor-none ${
-                        index === 0
-                          ? 'border-[#FF4655]/20 shadow-[0_6px_22px_-4px_rgba(255,70,85,0.07)] hover:border-[#FF4655]/45 hover:shadow-[0_15px_35px_-5px_rgba(255,70,85,0.18)]'
-                          : 'border-white/5 hover:border-[#FF4655]/40 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)]'
-                      }`}
+                      className="group/card relative bg-[#0a1219]/80 backdrop-blur-2xl p-8 md:p-12 border border-[#FF4655]/20 shadow-[0_6px_22px_-4px_rgba(255,70,85,0.07)] hover:border-[#FF4655]/45 hover:shadow-[0_15px_35px_-5px_rgba(255,70,85,0.18)] transition-all duration-700 h-full flex flex-col overflow-hidden cursor-none"
                     >
-                      {/* TACTICAL HUD RETICLES (FOR #1 FLAGSHIP PROJECT) */}
-                      {index === 0 && (
-                        <>
-                          <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#FF4655]/70 pointer-events-none z-20" />
-                          <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#FF4655]/30 pointer-events-none z-20" />
-                          <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#FF4655]/70 pointer-events-none z-20" />
-                        </>
-                      )}
+                      {/* TACTICAL HUD RETICLES (ON ALL CARDS FOR CONSISTENT HUD CHASSIS) */}
+                      <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#FF4655]/70 pointer-events-none z-20" />
+                      <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#FF4655]/30 pointer-events-none z-20" />
+                      <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#FF4655]/70 pointer-events-none z-20" />
 
-                      {/* LATEST PROJECT CORNER BADGE (WITH VISIBLE LASER SWEEP) */}
-                      {index === 0 && (
+                      {/* LATEST PROJECT CORNER BADGE (AUTOMATIC FOR NEW/FLAGSHIP PROJECT) */}
+                      {isLatest && (
                         <div 
                           className="absolute top-0 right-0 z-30 flex items-center gap-2 px-4 py-2 bg-[#FF4655]/15 border-b border-l border-[#FF4655]/60 backdrop-blur-md font-mono text-[10px] tracking-[0.25em] text-[#FF4655] font-black uppercase shadow-[0_0_20px_rgba(255,70,85,0.25)] pointer-events-none overflow-hidden"
                           style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px))' }}
@@ -208,7 +202,7 @@ export default function Projects({ projects }) {
                         <div className="flex justify-between items-start mb-8 font-mono text-[10px] tracking-[0.4em] uppercase text-[#FF4655]">
                           <span>DATA_ID // 00{index + 1}</span>
                           <span className="text-[#00E5FF] group-hover/card:shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
-                            {index === 0 ? '[ V1.0 // STABLE ]' : '[ ACTIVE_BUILD ]'}
+                            {isLatest ? '[ V1.0 // STABLE ]' : '[ ACTIVE_BUILD ]'}
                           </span>
                         </div>
 
@@ -263,7 +257,7 @@ export default function Projects({ projects }) {
                 </Magnetic>
               </Reveal>
             </div>
-          ))}
+          );})}
         </div>
       </div>
     </section>
