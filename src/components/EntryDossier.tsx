@@ -39,7 +39,23 @@ export default function EntryDossier() {
           <TypewriterWrapper />
         </div>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-6">
+        {/* INTERACTIVE AI OPERATOR HUD PROMPT */}
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-terminal'))}
+            className="group relative inline-flex items-center gap-3 px-5 py-2.5 bg-[#15202B]/60 backdrop-blur-md border border-white/10 hover:border-[#39FF14]/50 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(57,255,20,0.15)] cursor-pointer"
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse shadow-[0_0_8px_#39FF14]" />
+            <span className="font-mono text-xs tracking-[0.25em] text-gray-400 group-hover:text-white uppercase transition-colors">
+              AI OPERATOR ONLINE <span className="text-gray-600 mx-1.5">//</span> PRESS <span className="text-white font-bold bg-white/10 px-2 py-0.5 rounded text-[11px] border border-white/15">CTRL+K</span> TO QUERY
+            </span>
+            <span className="text-[#39FF14] font-mono text-xs group-hover:translate-x-0.5 transition-transform">{'>'}</span>
+            <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white/30 group-hover:border-[#39FF14]"></div>
+            <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white/30 group-hover:border-[#39FF14]"></div>
+          </button>
+        </div>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-6">
 
           <Magnetic>
             <a href="https://linkedin.com/in/ananth-valluru" target="_blank" className="group relative flex items-center gap-4 bg-[#15202B]/40 backdrop-blur-md text-gray-300 border border-white/5 px-12 py-6 text-lg tracking-[0.3em] transition-all duration-500 hover:border-[#FF4655] hover:text-white">

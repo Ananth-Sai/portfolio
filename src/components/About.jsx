@@ -51,13 +51,60 @@ export default function About({ skillSectors }) {
               </h2>
 
               <div className="relative z-20">
-                <span className="text-[#FF4655] font-mono text-sm tracking-[0.4em] block mb-6 opacity-60 italic">
-                  {"// SUBJECT_BIO_DATA_EXTRACTED"}
-                </span>
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-8 border-b border-gray-800 pb-4">
+                  <span className="text-[#FF4655] font-mono text-xs tracking-[0.4em] uppercase opacity-75">
+                    {"// SUBJECT_BIO_DATA_EXTRACTED"}
+                  </span>
+                  <span className="font-mono text-[10px] tracking-[0.2em] px-3 py-1 border border-[#00E5FF]/40 text-[#00E5FF] shadow-[0_0_10px_rgba(0,229,255,0.1)]">
+                    [ STATUS: OPERATIONAL ]
+                  </span>
+                </div>
 
-                <p className="text-lg md:text-xl text-gray-400 leading-loose tracking-[0.1em] text-justify font-mono uppercase">
-                  As a <span className="text-[#FF4655] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(255,70,85,0.5)]">Full-Stack Developer</span> with a <span className="text-[#F59E0B] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(245,158,11,0.5)]">Master’s from Illinois Tech</span>, I love the challenge of engineering <span className="text-[#39FF14] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(57,255,20,0.5)]">web platforms</span> that are both scalable and user-friendly. I work primarily with <span className="text-[#00E5FF] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]">React and Node.js</span>, supported by a strong foundation in <span className="text-[#C678DD] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(198,120,221,0.5)]">algorithms and database management</span>. My core objective is to continue pushing <span className="text-[#FF9900] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(255,153,0,0.5)]">web architecture</span> forward by integrating intelligent <span className="text-[#7952B3] font-medium tracking-wide drop-shadow-[0_0_5px_rgba(121,82,179,0.5)]">AI capabilities</span> into everyday applications.
-                </p>
+                {/* TACTICAL INTEL NODES */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                  <div className="bg-[#0F1923]/80 border border-gray-800 p-5 transition-all duration-300 hover:border-[#FF4655]/40 hover:shadow-[0_0_15px_rgba(255,70,85,0.1)]">
+                    <span className="text-[10px] font-mono tracking-[0.3em] text-[#FF4655] uppercase block mb-2">
+                      // 01_SPECIALIZATION
+                    </span>
+                    <h4 className="text-white font-mono text-sm font-bold tracking-wider uppercase mb-1">
+                      Full-Stack & AI
+                    </h4>
+                    <p className="text-gray-400 font-mono text-xs tracking-wide">
+                      React &bull; Next.js &bull; Node.js &bull; Python
+                    </p>
+                  </div>
+
+                  <div className="bg-[#0F1923]/80 border border-gray-800 p-5 transition-all duration-300 hover:border-[#F59E0B]/40 hover:shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+                    <span className="text-[10px] font-mono tracking-[0.3em] text-[#F59E0B] uppercase block mb-2">
+                      // 02_CREDENTIALS
+                    </span>
+                    <h4 className="text-white font-mono text-sm font-bold tracking-wider uppercase mb-1">
+                      M.S. Computer Science
+                    </h4>
+                    <p className="text-gray-400 font-mono text-xs tracking-wide">
+                      Illinois Tech (Chicago) // Alum 2025
+                    </p>
+                  </div>
+
+                  <div className="bg-[#0F1923]/80 border border-gray-800 p-5 transition-all duration-300 hover:border-[#39FF14]/40 hover:shadow-[0_0_15px_rgba(57,255,20,0.1)]">
+                    <span className="text-[10px] font-mono tracking-[0.3em] text-[#39FF14] uppercase block mb-2">
+                      // 03_DIRECTIVE
+                    </span>
+                    <h4 className="text-white font-mono text-sm font-bold tracking-wider uppercase mb-1">
+                      Production & Multi-Agent
+                    </h4>
+                    <p className="text-gray-400 font-mono text-xs tracking-wide">
+                      Autonomous LLMs &bull; Scalable APIs
+                    </p>
+                  </div>
+                </div>
+
+                {/* NARRATIVE STATEMENT */}
+                <div className="bg-[#0F1923]/40 border-l-2 border-[#FF4655] p-5">
+                  <p className="text-base md:text-lg text-gray-300 leading-relaxed font-mono tracking-wide">
+                    As a <span className="text-white font-bold">Full-Stack Developer & AI Engineer</span>, I engineer scalable web platforms and intelligent developer tooling. Backed by an M.S. from Illinois Tech, I bridge core software architecture (<span className="text-[#00E5FF] font-semibold">React, Next.js, Node.js</span>) with autonomous agentic systems and deterministic orchestration (<span className="text-[#39FF14] font-semibold">Python, Gemini API, Multi-Agent Loops</span>).
+                  </p>
+                </div>
               </div>
             </div>
           </Tilt>

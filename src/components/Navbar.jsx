@@ -102,24 +102,20 @@ export default function Navbar() {
             <Magnetic>
               <button 
                 onClick={handleOpenTerminal}
-                className="relative flex items-center gap-4 border border-white/10 bg-white/5 backdrop-blur-md px-6 py-2.5 hover:border-[#FF4655]/50 hover:bg-[#FF4655]/10 transition-all duration-500 overflow-hidden"
+                className="relative flex items-center gap-3 border border-white/10 bg-white/5 backdrop-blur-md px-5 py-2 hover:border-[#39FF14]/50 hover:bg-[#39FF14]/10 transition-all duration-500 overflow-hidden shadow-[0_0_15px_rgba(57,255,20,0.06)]"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse" />
-                <span className="font-mono text-[10px] font-bold tracking-[0.3em] text-gray-400 group-hover/term:text-white transition-colors uppercase">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#39FF14] animate-pulse shadow-[0_0_8px_#39FF14]" />
+                <span className="font-mono text-[10px] font-bold tracking-[0.3em] text-gray-300 group-hover/term:text-white transition-colors uppercase">
                   Terminal: Online
                 </span>
+                <span className="font-mono text-[9px] px-1.5 py-0.5 bg-white/10 text-gray-400 rounded border border-white/10 group-hover/term:text-[#39FF14] group-hover/term:border-[#39FF14]/30 transition-colors">
+                  CTRL+K
+                </span>
                 
-                <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white/20 group-hover/term:border-[#FF4655]"></div>
-                <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white/20 group-hover/term:border-[#FF4655]"></div>
+                <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-white/20 group-hover/term:border-[#39FF14]"></div>
+                <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-white/20 group-hover/term:border-[#39FF14]"></div>
               </button>
             </Magnetic>
-
-            {/* Tactical Shortcut Hint */}
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/term:opacity-100 transition-all duration-300 pointer-events-none translate-y-2 group-hover/term:translate-y-0">
-              <div className="bg-[#FF4655] text-white text-[9px] px-3 py-1 font-mono tracking-[0.2em] shadow-[0_0_15px_rgba(255,70,85,0.4)]">
-                UPLINK: [CTRL+K]
-              </div>
-            </div>
           </div>
         </div>
       </div>
