@@ -46,6 +46,76 @@ export default function CommandPalette() {
     }
   }, [isOpen]);
 
+  const formatResponseContent = (content: ReactNode) => {
+    if (typeof content !== 'string') return content;
+
+    const renderWithLinks = (text: string) => {
+      const urlRegex = /(https?:\/\/[^\s\)]+)/g;
+      const parts = text.split(urlRegex);
+      return parts.map((part, pIdx) => {
+        if (part.match(urlRegex)) {
+          return (
+            <a
+              key={pIdx}
+              href={part}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#00e5ff] hover:underline underline-offset-2 font-bold transition-colors inline-flex items-center gap-0.5"
+            >
+              {part.replace('https://github.com/Ananth-Sai/', 'repo:').replace('https://', '')} ↗
+            </a>
+          );
+        }
+        return part;
+      });
+    };
+
+    const lines = content.split('\n');
+    return (
+      <div className="space-y-3 font-mono text-sm md:text-base leading-relaxed text-gray-200">
+        {lines.map((line, lIdx) => {
+          const trimmed = line.trim();
+          if (!trimmed) return <div key={lIdx} className="h-2" />;
+
+          if (trimmed.startsWith('> INQUIRY:')) {
+            return (
+              <div key={lIdx} className="text-gray-400 font-bold border-b border-gray-900 pb-2 mb-2 text-xs md:text-sm tracking-wider uppercase">
+                {trimmed}
+              </div>
+            );
+          }
+
+          if (trimmed.startsWith('> RESPONSE:')) {
+            const body = trimmed.replace('> RESPONSE:', '').trim();
+            return (
+              <div key={lIdx} className="text-gray-200">
+                <span className="text-[#ff4655] font-black uppercase text-xs tracking-widest block mb-1">
+                  &gt; RESPONSE_STREAM:
+                </span>
+                <p className="text-gray-100">{renderWithLinks(body)}</p>
+              </div>
+            );
+          }
+
+          if (trimmed.startsWith('- ')) {
+            return (
+              <div key={lIdx} className="flex items-start gap-2 text-gray-200 pl-2">
+                <span className="text-[#ff4655] mt-1 text-xs">◆</span>
+                <p className="flex-1">{renderWithLinks(trimmed.substring(2))}</p>
+              </div>
+            );
+          }
+
+          return (
+            <p key={lIdx} className="text-gray-200">
+              {renderWithLinks(trimmed)}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
+
   const handleCommand = async (e: React.FormEvent) => {
     e.preventDefault();
     const cmd = input.trim();
@@ -155,23 +225,24 @@ export default function CommandPalette() {
                 </form>
 
                 <AnimatePresence mode="wait">
-                  {(isThinking || aiResponse) && (
-                    <motion.div
-                      key={isThinking ? 'thinking' : 'response'}
-                      initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
-                      className="font-mono text-base md:text-lg text-[#00ff00] border-t border-gray-900 pt-6 tracking-wide leading-relaxed max-h-[50vh] overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
-                    >
-                      {isThinking ? (
-                        <span className="animate-pulse flex items-center gap-3">
-                          <span className="w-2 h-6 bg-[#00ff00] inline-block"></span>
-                          UPLINK_IN_PROGRESS...
-                        </span>
-                      ) : (
-                        typeof aiResponse === 'string' ? <span className="whitespace-pre-wrap">{aiResponse}</span> : aiResponse
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    {(isThinking || aiResponse) && (
+                      <motion.div
+                        key={isThinking ? 'thinking' : 'response'}
+                        initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
+                        onWheel={(e) => e.stopPropagation()}
+                        className="border-t border-gray-900 pt-5 mt-2 max-h-[46vh] overflow-y-auto pr-3 tactical-scrollbar overscroll-contain select-text"
+                      >
+                        {isThinking ? (
+                          <span className="animate-pulse flex items-center gap-3 font-mono text-[#00ff00] text-sm md:text-base">
+                            <span className="w-2 h-5 bg-[#00ff00] inline-block"></span>
+                            ESTABLISHING_DATA_LINK...
+                          </span>
+                        ) : (
+                          formatResponseContent(aiResponse)
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
               </div>
 
               <div className="md:col-span-2 bg-[#0c0c0e]/80 p-10 space-y-10 flex flex-col border-l border-gray-900 relative">

@@ -29,3 +29,27 @@ body {
 .laser-sweep {
   animation: laserSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+
+/* --- TACTICAL HUD CUSTOM SCROLLBAR --- */
+.tactical-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ff4655 #0e0e12;
+}
+
+.tactical-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.tactical-scrollbar::-webkit-scrollbar-track {
+  background: #0e0e12;
+  border-radius: 2px;
+}
+
+.tactical-scrollbar::-webkit-scrollbar-thumb {
+  background: #ff4655;
+  border-radius: 2px;
+}
+
+.tactical-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ff6b78;
+}
