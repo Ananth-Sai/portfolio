@@ -159,7 +159,7 @@ export default function CommandPalette() {
                     <motion.div
                       key={isThinking ? 'thinking' : 'response'}
                       initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
-                      className="font-mono text-xl text-[#00ff00] border-t border-gray-900 pt-8 tracking-widest leading-relaxed"
+                      className="font-mono text-base md:text-lg text-[#00ff00] border-t border-gray-900 pt-6 tracking-wide leading-relaxed max-h-[50vh] overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
                     >
                       {isThinking ? (
                         <span className="animate-pulse flex items-center gap-3">
