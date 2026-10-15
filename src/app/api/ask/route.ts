@@ -106,7 +106,7 @@ User Inquiry: "${question}"
         }
       } catch (modelErr) {
         lastError = modelErr;
-        console.warn([Ask API] Model  failed or busy. Trying next model in fallback chain...);
+        console.warn("[Ask API] Model failed or busy. Trying next model in fallback chain...");
       }
     }
 
