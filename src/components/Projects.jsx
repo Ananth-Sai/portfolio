@@ -45,15 +45,18 @@ export default function Projects({ projects }) {
       { name: 'TypeScript', color: 'text-[#3178C6] font-bold' },
       { name: 'Vercel', color: 'text-white font-bold' },
 
-      // --- AUTONOMOUS AI PR REVIEW AGENT KEYWORDS ---
+      // --- MULTI-AGENT AI PR REVIEW ENGINE KEYWORDS ---
+      { name: 'multi-agent review pipeline', color: 'text-[#00E5FF] font-bold' },
+      { name: 'Security & Quality critics', color: 'text-[#FF4655] font-bold' },
+      { name: 'asynchronous thread pools', color: 'text-[#38BDF8] font-bold' },
+      { name: 'deterministic security gate', color: 'text-[#10B981] font-bold' },
+      { name: 'lead synthesis engine', color: 'text-[#C678DD] font-bold' },
+      { name: 'remediation PR generation', color: 'text-[#10B981] font-bold' },
+      { name: 'multi-model Gemini fallbacks', color: 'text-[#00E5FF] font-bold' },
+      { name: '29 passing unit tests', color: 'text-[#10B981] font-bold' },
       { name: 'FastAPI', color: 'text-[#009688] font-bold' },
-      { name: 'code reviews', color: 'text-[#FF4655] font-bold' },
-      { name: 'ChatOps commands', color: 'text-[#00E5FF] font-bold' },
-      { name: 'regex secret scanning', color: 'text-[#F59E0B] font-bold' },
-      { name: 'remediation pull requests', color: 'text-[#10B981] font-bold' },
       { name: 'Docker', color: 'text-[#38BDF8] font-bold' },
-      { name: 'Redis queue', color: 'text-[#FF4655] font-bold' },
-      { name: '100% test coverage', color: 'text-[#10B981] font-bold' },
+      { name: 'Redis', color: 'text-[#FF4655] font-bold' },
 
       // --- INFRADOCS AI KEYWORDS ---
       { name: 'Streamlit', color: 'text-[#FF4B4B] font-bold' },
