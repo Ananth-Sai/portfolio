@@ -23,81 +23,63 @@ export default function Projects({ projects }) {
 
   const highlightSyntax = (text) => {
     const keywords = [
-      { name: 'React', color: 'text-[#61DBFB]' },
-      { name: 'Node.js', color: 'text-[#68A063]' },
-      { name: 'Django', color: 'text-[#FFD43B]' },
-      { name: 'Tailwind CSS', color: 'text-[#38BDF8]' },
-      { name: 'RESTful APIs', color: 'text-[#C678DD]' },
-      { name: 'Next.js', color: 'text-white font-bold' },
-      { name: 'Full-Stack', color: 'text-white font-bold uppercase' },
+      // --- PORTFOLIO WEBSITE (All unique non-repeating colors) ---
+      { name: 'FULL-STACK', color: 'text-white font-bold uppercase' },
       { name: 'tactical HUD interface', color: 'text-[#FF4655] font-bold' },
+      { name: 'MongoDB Atlas', color: 'text-[#10B981] font-bold' },
       { name: 'optimized SEO', color: 'text-[#F59E0B] font-bold' },
-      { name: 'Vercel edge deployment', color: 'text-white font-bold tracking-wide' },
+      { name: 'Vercel edge deployment', color: 'text-[#38BDF8] font-bold' },
       { name: 'live data streaming', color: 'text-[#00E5FF] font-bold' },
-      { name: 'MongoDB Atlas', color: 'text-[#13AA52] font-bold' },
+      { name: 'Next.js App Router', color: 'text-[#C678DD] font-bold' },
 
-      // --- ATS EVALUATOR KEYWORDS ---
+      // --- MULTI-AGENT AI PR REVIEW ENGINE (All unique non-repeating colors) ---
+      { name: 'multi-agent review pipeline', color: 'text-[#00E5FF] font-bold' },
+      { name: 'Security & Quality critics', color: 'text-[#FF4655] font-bold' },
+      { name: 'asynchronous thread pools', color: 'text-[#38BDF8] font-bold' },
+      { name: 'lead synthesis engine', color: 'text-[#C678DD] font-bold' },
+      { name: 'deterministic security gate', color: 'text-[#10B981] font-bold' },
+      { name: 'remediation PR generation', color: 'text-[#F59E0B] font-bold' },
+      { name: 'multi-model Gemini fallbacks', color: 'text-white font-bold' },
+      { name: '29 passing unit tests', color: 'text-[#10B981] font-bold' },
+
+      // --- INFRADOCS AI (All unique non-repeating colors) ---
+      { name: 'Streamlit', color: 'text-[#FF4655] font-bold' },
+      { name: 'Gemini 2.5 Flash', color: 'text-[#00E5FF] font-bold' },
+      { name: 'temperature=0', color: 'text-[#F59E0B] font-bold' },
+      { name: 'hybrid search (BM25 + Dense RRF)', color: 'text-[#10B981] font-bold' },
+      { name: 'cross-encoder re-ranking', color: 'text-[#C678DD] font-bold' },
+      { name: 'HyDE', color: 'text-[#38BDF8] font-bold' },
+      { name: '100% recall', color: 'text-white font-bold' },
+      { name: '0% hallucination', color: 'text-[#10B981] font-bold' },
+
+      // --- DUALCODE / CRITIC LOOP (All unique non-repeating colors) ---
+      { name: 'closed-loop cybernetic', color: 'text-[#00E5FF] font-bold' },
+      { name: 'zero-LLM Orchestrator', color: 'text-[#FF4655] font-bold' },
+      { name: 'asymmetric cross-model', color: 'text-[#C678DD] font-bold' },
+      { name: '5 engineering dimensions', color: 'text-[#F59E0B] font-bold' },
+      { name: 'difflib similarity', color: 'text-[#38BDF8] font-bold' },
+      { name: 'AST syntactic validation', color: 'text-white font-bold' },
+      { name: 'sandboxed Pytest', color: 'text-[#10B981] font-bold' },
+
+      // --- GIT VISUALIZER (All unique non-repeating colors) ---
+      { name: '3-tree architecture', color: 'text-[#F59E0B] font-bold' },
+      { name: 'AST parser', color: 'text-[#00E5FF] font-bold' },
+      { name: 'Framer Motion', color: 'text-[#FF4655] font-bold' },
+      { name: 'lane allocation', color: 'text-[#C678DD] font-bold' },
+      { name: '12-level progressive curriculum', color: 'text-[#10B981] font-bold' },
+      { name: '3-way merge conflict labs', color: 'text-[#FF4655] font-bold' },
+      { name: 'interactive rebase studios', color: 'text-[#F59E0B] font-bold' },
+      { name: 'BYOK/Gemini 2.5 Flash', color: 'text-[#00E5FF] font-bold' },
+      { name: 'Zustand', color: 'text-[#8A63D2] font-bold' },
+
+      // --- ATS EVALUATOR (All unique non-repeating colors) ---
       { name: 'Google Gemini API', color: 'text-[#00E5FF] font-bold' },
       { name: 'real-time ATS scoring', color: 'text-[#10B981] font-bold' },
       { name: 'recruiter feedback', color: 'text-[#FF4655] font-bold' },
       { name: 'STAR-formatted statements', color: 'text-[#F59E0B] font-bold' },
       { name: 'Supabase', color: 'text-[#3ECF8E] font-bold' },
       { name: 'TypeScript', color: 'text-[#3178C6] font-bold' },
-      { name: 'Vercel', color: 'text-white font-bold' },
-
-      // --- MULTI-AGENT AI PR REVIEW ENGINE KEYWORDS ---
-      { name: 'multi-agent review pipeline', color: 'text-[#00E5FF] font-bold' },
-      { name: 'Security & Quality critics', color: 'text-[#FF4655] font-bold' },
-      { name: 'asynchronous thread pools', color: 'text-[#38BDF8] font-bold' },
-      { name: 'deterministic security gate', color: 'text-[#10B981] font-bold' },
-      { name: 'lead synthesis engine', color: 'text-[#C678DD] font-bold' },
-      { name: 'remediation PR generation', color: 'text-[#10B981] font-bold' },
-      { name: 'multi-model Gemini fallbacks', color: 'text-[#00E5FF] font-bold' },
-      { name: '29 passing unit tests', color: 'text-[#10B981] font-bold' },
-      { name: 'FastAPI', color: 'text-[#009688] font-bold' },
-      { name: 'Docker', color: 'text-[#38BDF8] font-bold' },
-      { name: 'Redis', color: 'text-[#FF4655] font-bold' },
-
-      // --- INFRADOCS AI KEYWORDS ---
-      { name: 'Streamlit', color: 'text-[#FF4B4B] font-bold' },
-      { name: 'Gemini 2.5 Flash', color: 'text-[#00E5FF] font-bold' },
-      { name: 'temperature=0', color: 'text-[#F59E0B] font-bold' },
-      { name: 'hybrid search', color: 'text-[#38BDF8] font-bold' },
-      { name: 'BM25 + Dense RRF', color: 'text-[#10B981] font-bold' },
-      { name: 'cross-encoder re-ranking', color: 'text-[#C678DD] font-bold' },
-      { name: 'HyDE', color: 'text-[#F59E0B] font-bold' },
-      { name: 'ablation evaluation', color: 'text-[#00E5FF] font-bold' },
-      { name: '100% recall', color: 'text-[#10B981] font-bold' },
-      { name: '0% hallucination', color: 'text-[#10B981] font-bold' },
-      { name: 'ChromaDB', color: 'text-[#FF7043] font-bold' },
-      { name: 'sentence-transformers', color: 'text-[#FFD43B] font-bold' },
-
-      // --- GIT VISUALIZER KEYWORDS ---
-      { name: 'Next.js App Router', color: 'text-[#FFFFFF] font-bold' },
-      { name: 'TypeScript', color: 'text-[#3178C6] font-bold' },
-      { name: 'Zustand', color: 'text-[#8A63D2] font-bold' },
-      { name: '3-tree architecture', color: 'text-[#F59E0B] font-bold' },
-      { name: 'AST parser', color: 'text-[#00E5FF] font-bold' },
-      { name: 'Framer Motion', color: 'text-[#EA4C89] font-bold' },
-      { name: 'Bézier splines', color: 'text-[#38BDF8] font-bold' },
-      { name: 'lane allocation', color: 'text-[#C678DD] font-bold' },
-      { name: '12-level curriculum', color: 'text-[#10B981] font-bold' },
-      { name: 'merge conflict labs', color: 'text-[#EF4444] font-bold' },
-      { name: 'interactive rebase', color: 'text-[#F59E0B] font-bold' },
-      { name: 'Gemini 2.5 Flash', color: 'text-[#00E5FF] font-bold' },
-      { name: 'BYOK', color: 'text-[#10B981] font-bold' },
-      { name: 'serverless proxy', color: 'text-[#38BDF8] font-bold' },
-
-      // --- DUALCODE KEYWORDS ---
-      { name: 'closed-loop cybernetic', color: 'text-[#00E5FF] font-bold' },
-      { name: 'zero-LLM Orchestrator', color: 'text-[#FF4655] font-bold' },
-      { name: 'asymmetric cross-model', color: 'text-[#C678DD] font-bold' },
-      { name: '5 engineering dimensions', color: 'text-[#F59E0B] font-bold' },
-      { name: 'difflib similarity', color: 'text-[#38BDF8] font-bold' },
-      { name: 'AST syntactic validation', color: 'text-[#F59E0B] font-bold' },
-      { name: 'sandboxed Pytest', color: 'text-[#10B981] font-bold' },
-      { name: 'stopping conditions', color: 'text-[#FF4655] font-bold' }
-    ];
+      { name: 'Vercel', color: 'text-[#38BDF8] font-bold' }    ];
     let parts = [text];
     keywords.forEach((keyword) => {
       let newParts = [];
