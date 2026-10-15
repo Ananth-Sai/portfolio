@@ -36,7 +36,13 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
+    const candidateModels = [
+      'gemini-3.6-flash',
+      'gemini-3.5-flash-lite',
+      'gemini-2.5-flash',
+      'gemini-flash-latest',
+      'gemini-3.5-flash'
+    ];
 
     // 3. TACTICAL SYSTEM PROMPT
     const systemPrompt = `
@@ -93,11 +99,29 @@ ${projectsContext}
       User Inquiry: "${question}"
     `;
 
-    const result = await model.generateContent(systemPrompt);
-    const response = await result.response;
-    const text = response.text();
+    let answerText = '';
+    let lastError: unknown = null;
 
-    return NextResponse.json({ answer: text });
+    for (const modelName of candidateModels) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(systemPrompt);
+        const response = await result.response;
+        answerText = response.text();
+        if (answerText && answerText.trim()) {
+          break;
+        }
+      } catch (modelErr) {
+        lastError = modelErr;
+        console.warn([Ask API] Model  failed or busy. Trying next model in fallback chain...);
+      }
+    }
+
+    if (!answerText) {
+      throw lastError || new Error('All candidate models in the fallback chain were unavailable.');
+    }
+
+    return NextResponse.json({ answer: answerText });
 
   } catch (error: unknown) {
     const errMessage = error instanceof Error ? error.message : String(error);
