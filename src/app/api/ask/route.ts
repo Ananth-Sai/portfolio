@@ -15,7 +15,14 @@ export async function POST(req: Request) {
       );
     }
 
-    const { question } = await req.json();
+    const { question, history } = await req.json();
+
+    // Format recent chat history if available
+    let historyContext = "";
+    if (Array.isArray(history) && history.length > 0) {
+      historyContext = "\nRECENT CONVERSATION HISTORY (USE TO RESOLVE PRONOUNS LIKE 'IT', 'THAT', 'THIS'):\n" +
+        history.map((h: { role: string; content: string }) => `${h.role === 'user' ? 'User' : 'Assistant'}: ${h.content}`).join("\n") + "\n";
+    }
 
     // 2. DYNAMIC INGESTION & BALANCED CATEGORIZATION
     let projectsContext = "NO LIVE PROJECTS FOUND.";
@@ -98,7 +105,9 @@ RULES FOR RESPONSES:
 5. Direct Links: When mentioning any project, always include its direct URL from the project list above.
 6. Strict Length: Keep answers concise and high-signal (maximum 2 to 3 short paragraphs or bullets, under 160 words total).
 7. Plain text only. Do not use markdown bolding (no asterisks).
+8. Pronoun & Ambiguity Handling: If the user inquiry uses an ambiguous pronoun ("it", "this", "that", "they") and the RECENT CONVERSATION HISTORY does not clearly establish what they are referring to, do NOT guess or arbitrarily select a project. Instead, briefly ask for clarification (e.g. "Could you clarify what you are referring to? Are you asking about self-critique in DualCode, LLM rubber-stamping in the PR reviewer, or another project?").
 
+${historyContext}
 User Inquiry: "${question}"
 `;
 

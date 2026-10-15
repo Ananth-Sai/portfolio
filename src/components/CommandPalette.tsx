@@ -9,6 +9,7 @@ export default function CommandPalette() {
   const [isThinking, setIsThinking] = useState(false);
   const [aiResponse, setAiResponse] = useState<ReactNode | null>(null);
   const [hoveredDesc, setHoveredDesc] = useState<string | null>(null);
+  const [chatHistory, setChatHistory] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -174,6 +175,7 @@ export default function CommandPalette() {
       document.body.classList.remove('theme-viper', 'system-glitch'); //
 
       setAiResponse(null); //
+      setChatHistory([]); //
       setInput(''); //
       setIsOpen(false); //
 
